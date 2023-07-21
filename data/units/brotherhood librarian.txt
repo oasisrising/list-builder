@@ -1,0 +1,18 @@
+BROTHERHOOD LIBRARIAN
+5" 5 2+ 5 6+ 1
+Combi-weapon [ANTI-INFANTRY 4+, DEVASTATING WOUNDS, RAPID FIRE 1]
+24" 1 4+ 4 0 1
+Purge Soul – witchfire [PSYCHIC]
+24" 1 3+ 6 -2 3
+Purge Soul – focused witchfire [PRECISION, PSYCHIC, HAZARDOUS]
+24" 1 3+ 6 -2 3
+Storm bolter [RAPID FIRE 2]
+24" 2 3+ 4 0 1
+Nemesis force weapon [PSYCHIC]
+Melee 4 2+ 6 -1 2
+ABILITIES
+CORE: Deep Strike, Leader FACTION: Teleport Assault
+Sanctic Hood: While this model is leading a unit, models in that unit have the Feel No Pain 4+ ability against Psychic Attacks.
+Vortex of Doom (Psychic): In your Shooting phase, you
+can select one enemy unit within 18" of and visible to this Psyker and roll one D6: on a 1, this Psyker’s unit suffers D6 mortal wounds; on a 2-5, that enemy unit suffers 2D3 mortal wounds; on a 6, that enemy unit suffers 2D6 mortal wounds.
+INVULNERABLE SAVE 4+

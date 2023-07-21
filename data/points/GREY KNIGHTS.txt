@@ -1,0 +1,66 @@
+Brother-Captain
+1 95
+Brother-Captain Stern
+1 110
+Brotherhood Champion
+1 85 
+Brotherhood Chaplain
+1 90 
+Brotherhood Librarian
+1 110 
+Brotherhood Techmarine
+1 85 
+Brotherhood Terminator Squad
+5 225 
+10 450 
+Castellan Crowe
+1 95 
+Grand Master
+1 115 
+Grand Master in Nemesis Dreadknight
+1 245 
+Grand Master Voldus
+1 115 
+Grey Knights Land Raider
+1 270 
+Grey Knights Land Raider Crusader
+1 250 
+Grey Knights Land Raider Redeemer
+1 290 
+Grey Knights Razorback
+1 95 
+Grey Knights Rhino
+1 80 
+Grey Knights Stormhawk Interceptor
+1 160 
+Grey Knights Stormraven Gunship
+1 265 
+Grey Knights Stormtalon Gunship
+1 170 
+Grey Knights Venerable Dreadnought
+1 155 
+Interceptor Squad
+5 160 
+10 320 
+Kaldor Draigo
+1 155 
+Nemesis Dreadknight
+1 215 
+Paladin Squad
+5 255 
+10 510 
+Purgation Squad
+5 190 
+10 320 
+Purifier Squad
+5 150 
+10 300 
+Servitors
+4 50 
+Strike Squad
+5 135 
+10 270
+Grey Knights Thunderhawk Gunship
+1 805 
+Land Raider Banisher
+1 255 

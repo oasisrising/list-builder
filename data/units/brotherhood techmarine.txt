@@ -1,0 +1,24 @@
+BROTHERHOOD TECHMARINE
+5" 4 2+ 4 6+ 1
+Bolt pistol [PISTOL]
+12" 1 3+ 4 0 1
+Boltgun
+24" 2 3+ 4 0 1
+Flamer [IGNORES COVER, TORRENT]
+12" D6 N/A 4 0 1
+Omnissian power axe
+Melee 4 3+ 6 -2 2
+Plasma cutter – standard [EXTRA ATTACKS]
+Melee 2 3+ 7 -2 1
+Plasma cutter – supercharge [EXTRA ATTACKS, HAZARDOUS]
+Melee 2 3+ 8 -3 2
+Servo-arms [EXTRA ATTACKS]
+Melee 2 3+ 8 -2 3
+ABILITIES
+CORE: Deep Strike, Leader
+FACTION: Teleport Assault
+Awaken the Machine Spirit: In your Command phase, you can select one friendly Grey Knights Vehicle model within 6" of this model. Until the start of your next Command phase, each time that Vehicle model makes an attack, add 1 to the Hit roll.
+Omnissiah’s Blessing: In your Command phase, you can select one friendly Grey Knights Vehicle model within 3" of this model. That Vehicle model regains up to D3 lost wounds.
+Techmarine: While this model is within 3" of one or more friendly Grey Knights Vehicle units, unless it is leading a unit, this model has the Lone Operative ability.
+
+

@@ -1,0 +1,14 @@
+CASTELLAN CROWE
+6" 4 2+ 5 6+ 1
+Purifying Flame [ANTI-INFANTRY 2+, IGNORES COVER, PSYCHIC]
+18" 3 2+ 4 -1 1
+Black Blade of Antwyr [DEVASTATING WOUNDS, PRECISION]
+Melee 5 2+ 6 -2 2
+Storm bolter [RAPID FIRE 2]
+24" 2 2+ 4 0 1
+ABILITIES
+CORE: Deep Strike, Leader FACTION: Teleport Assault
+Champion of the Order of Purifiers (Psychic): While this model is leading a unit, add 1 to the Attacks characteristic of that unit’s Purifying Flame.
+Foresight of the Prognosticars (Psychic): Once per turn, the first time a saving throw is failed for this model, change the Damage characteristic of that attack to 0.
+INVULNERABLE SAVE 4+
+
