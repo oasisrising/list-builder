@@ -33,7 +33,6 @@ export function getSortedUnitsData(): Unit[] {
     let weapons: WeaponStat[] = [];
     while (lines[lineIndex] != 'ABILITIES') {
       const nameLine = lines[lineIndex].split(' [');
-      console.log(nameLine);
       const name = nameLine[0];
       // const specialRules = nameLine[1].split(' ');
       lineIndex++;
@@ -107,7 +106,6 @@ export function getUnitPointsData(): UnitPointsData[] {
         lineIndex++;
       }
     }
-    console.log(unitPointsData);
     return unitPointsData;
   });
 

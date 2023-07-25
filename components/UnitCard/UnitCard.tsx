@@ -1,49 +1,33 @@
-import {
-  Box,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Tooltip,
-  Typography,
-} from '@mui/material';
-import { mdiCrosshairs, mdiSwordCross } from '@mdi/js';
-import Icon from '@mdi/react';
+'use client';
+import { Box, Grid, Paper, Typography, useTheme } from '@mui/material';
 import React from 'react';
-import {
-  Unit,
-  Stat,
-  statDescriptions,
-  StatType,
-  RangedStats,
-  MeleeStats,
-  WeaponType,
-  WeaponStat,
-} from '../../models/Unit';
+import { Unit, RangedStats, MeleeStats, WeaponType } from '../../models/Unit';
 import { UnitStatDisplay } from './components/UnitStatDisplay';
-import { DARKER_GREY, DARK_GREY, LIGHT_GREY } from '../../styles/CustomTheme';
+import { DARKER_GREY, DARK_GREY } from '../../styles/CustomTheme';
+import { WeaponTable } from './components/WeaponsTable';
 
-export const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
+const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
+  const theme = useTheme();
   return (
     <Paper
-      sx={{ minWidth: 300, margin: '24px' }}
+      sx={{
+        [theme.breakpoints.down('desktop')]: { margin: '24px 8px' }, // anything smaller than desktop will have smaller left/right margins
+        margin: '24px',
+        overflow: 'auto',
+      }}
       elevation={5}
-      variant='outlined'
     >
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          padding: '16px',
-          backgroundColor: DARK_GREY,
-        }}
+      <Grid
+        container
+        spacing={2}
+        sx={{ padding: theme.spacing(2), backgroundColor: DARK_GREY }}
       >
-        <Typography variant='h1' color='white'>
-          {unit.name}
-        </Typography>
-        <Box>
+        <Grid item mobile={12} desktop={8}>
+          <Typography variant='h1' color='white'>
+            {unit.name}
+          </Typography>
+        </Grid>
+        <Grid item mobile={12} desktop={4}>
           {unit.points.map((points) => (
             <Typography variant='body1' color='white'>
               {`${points.modelCount} model${
@@ -51,8 +35,9 @@ export const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
               }: ${points.points} pts`}
             </Typography>
           ))}
-        </Box>
-      </Box>
+        </Grid>
+      </Grid>
+      {/* </Box> */}
       <Box display='flex' sx={{ backgroundColor: DARKER_GREY }}>
         {unit.unitStats.map((unitStat) => (
           <UnitStatDisplay {...unitStat} key={unitStat.type} />
@@ -72,63 +57,4 @@ export const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
   );
 };
 
-const WeaponTable: React.FC<{
-  stats: StatType[];
-  type: WeaponType;
-  weapons: WeaponStat[];
-}> = ({ stats, type, weapons }) => {
-  return (
-    <Box>
-      <Table size='small'>
-        <TableHead sx={{ background: DARK_GREY }}>
-          <TableRow>
-            <TableCell sx={{ padding: '4px 0 0 4px' }}>
-              <Icon
-                color='white'
-                path={
-                  type === WeaponType.Ranged ? mdiCrosshairs : mdiSwordCross
-                }
-                size='24px'
-              />
-            </TableCell>
-            <TableCell width='320px'>
-              <Typography variant='h3'>{type}</Typography>
-            </TableCell>
-            {stats.map((stat) => (
-              <Tooltip title={statDescriptions[stat]} key={stat}>
-                <TableCell>
-                  <Typography variant='h3' textAlign='center'>
-                    {stat}
-                  </Typography>
-                </TableCell>
-              </Tooltip>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {weapons
-            .filter((weapon) => weapon.weaponType === type)
-            .map((weapon) => (
-              <TableRow key={weapon.name} sx={{ borderBottomStyle: 'solid' }}>
-                <TableCell />
-                <TableCell>
-                  <Typography>{weapon.name}</Typography>
-                </TableCell>
-                {stats.map((stat) => (
-                  <TableCell key={stat}>
-                    <Typography textAlign='center'>
-                      {
-                        weapon.weaponStats.find(
-                          (weaponStat) => weaponStat.type === stat
-                        )?.value
-                      }
-                    </Typography>
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
-    </Box>
-  );
-};
+export default UnitCard;

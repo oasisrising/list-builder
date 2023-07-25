@@ -1,3 +1,4 @@
+'use client';
 import { Tooltip, Box, Typography, useTheme } from '@mui/material';
 import { Stat, statDescriptions } from '../../../models/Unit';
 import { DARK_GREY, LIGHT_GREY } from '../../../styles/CustomTheme';

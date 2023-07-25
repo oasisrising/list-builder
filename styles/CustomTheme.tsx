@@ -1,18 +1,41 @@
 import { ThemeOptions, ThemeProvider, createTheme } from '@mui/material/styles';
-import { ReactElement, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export const LIGHT_GREY = '#dfe2e1';
 export const DARK_GREY = '#4a6570';
 export const DARKER_GREY = '#02131e';
 
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xs: false; // removes the `xs` breakpoint
+    sm: false;
+    md: false;
+    lg: false;
+    xl: false;
+    mobile: true; // adds the `mobile` breakpoint
+    tablet: true;
+    laptop: true;
+    desktop: true;
+  }
+}
+
 export const themeOptions: ThemeOptions = {
+  spacing: 8,
+  breakpoints: {
+    values: {
+      mobile: 0,
+      tablet: 640,
+      laptop: 1024,
+      desktop: 1200,
+    },
+  },
   palette: {
     mode: 'light',
     primary: {
       main: '#3f51b5',
     },
     secondary: {
-      main: '#f50057',
+      main: '#ffffff',
     },
     background: {
       default: '#4a6570',
@@ -40,6 +63,15 @@ export const themeOptions: ThemeOptions = {
       textTransform: 'uppercase',
       color: 'white',
       fontWeight: 800,
+    },
+  },
+  components: {
+    MuiTableBody: {
+      styleOverrides: {
+        root: {
+          'tr:last-child': { borderBottomStyle: 'none' },
+        },
+      },
     },
   },
 };
