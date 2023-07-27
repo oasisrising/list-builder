@@ -1,7 +1,8 @@
 'use client';
-import { Tooltip, Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import { Stat, statDescriptions } from '../../../models/Unit';
 import { DARK_GREY, LIGHT_GREY } from '../../../styles/CustomTheme';
+import { StyledTooltip as Tooltip } from '../../StyledTooltip';
 
 export const UnitStatDisplay: React.FC<Stat> = ({ type, value }) => {
   const theme = useTheme();

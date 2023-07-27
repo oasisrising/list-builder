@@ -1,14 +1,25 @@
 'use client';
-import { Box, Grid, Paper, Typography, useTheme } from '@mui/material';
+import {
+  Box,
+  Grid,
+  IconButton,
+  Paper,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import React, { useRef } from 'react';
 import { Unit, RangedStats, MeleeStats, WeaponType } from '../../models/Unit';
 import { UnitStatDisplay } from './components/UnitStatDisplay';
 import { DARKER_GREY, DARK_GREY } from '../../styles/CustomTheme';
 import { WeaponTable } from './components/WeaponsTable';
 import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
+import { AddCircle } from '@mui/icons-material';
+import { StyledTooltip as Tooltip } from '../StyledTooltip';
+import { RosterDataContext } from '../RosterDataProvider/RosterDataContext';
 
 const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
   const { selectedUnit } = React.useContext(UnitDataContext);
+  const { addUnit } = React.useContext(RosterDataContext);
   const theme = useTheme();
   const ref = useRef(null);
 
@@ -17,6 +28,10 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
       ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [selectedUnit]);
+
+  const handleAddToRoster = () => {
+    addUnit(unit);
+  };
 
   return (
     <Paper
@@ -40,11 +55,22 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
         </Grid>
         <Grid item mobile={12} desktop={4}>
           {unit.points.map((points) => (
-            <Typography variant='body1' color='white'>
-              {`${points.modelCount} model${
-                points.modelCount > 1 ? 's' : ''
-              }: ${points.points} pts`}
-            </Typography>
+            <Box display='flex' justifyContent='left' alignItems='center'>
+              <Typography variant='body1' color='white'>
+                {`${points.modelCount} model${
+                  points.modelCount > 1 ? 's' : ''
+                }: ${points.points} pts`}
+              </Typography>
+              <Tooltip title='Add to roster'>
+                <IconButton
+                  aria-lable='add to roster'
+                  color='secondary'
+                  onClick={handleAddToRoster}
+                >
+                  <AddCircle />
+                </IconButton>
+              </Tooltip>
+            </Box>
           ))}
         </Grid>
       </Grid>

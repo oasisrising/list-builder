@@ -1,18 +1,7 @@
 'use client';
 import { mdiCrosshairs, mdiSwordCross } from '@mdi/js';
 import Icon from '@mdi/react';
-import {
-  Box,
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  Typography,
-  Tooltip,
-  TableBody,
-  Grid,
-  styled,
-} from '@mui/material';
+import { Box, Typography, Grid, styled } from '@mui/material';
 import {
   StatType,
   WeaponStat,
@@ -20,6 +9,7 @@ import {
   statDescriptions,
 } from '../../../models/Unit';
 import { DARK_GREY } from '../../../styles/CustomTheme';
+import { StyledTooltip as Tooltip } from '../../StyledTooltip';
 
 export const WeaponTable: React.FC<{
   stats: StatType[];
