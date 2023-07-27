@@ -8,7 +8,7 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import { RosterUnit, Unit } from '../../models/Unit';
+import { RosterUnit } from '../../models/Unit';
 import React from 'react';
 import { RosterDataContext } from '../RosterDataProvider/RosterDataContext';
 import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';

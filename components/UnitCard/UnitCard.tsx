@@ -16,7 +16,7 @@ import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
 import { AddCircle, RemoveCircle } from '@mui/icons-material';
 import { StyledTooltip as Tooltip } from '../StyledTooltip';
 import { RosterDataContext } from '../RosterDataProvider/RosterDataContext';
-import _, { set } from 'lodash';
+import _ from 'lodash';
 
 const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
   const { selectedUnit } = React.useContext(UnitDataContext);
@@ -112,7 +112,6 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
           ))}
         </Grid>
       </Grid>
-      {/* </Box> */}
       <Box display='flex' sx={{ backgroundColor: DARKER_GREY }}>
         {unit.unitStats.map((unitStat) => (
           <UnitStatDisplay {...unitStat} key={unitStat.type} />
