@@ -43,7 +43,11 @@ export const WeaponTable: React.FC<{
             size='24px'
           />
         </HeaderRowItem>
-        <HeaderRowItem item mobile={5} sx={{ justifyContent: 'start' }}>
+        <HeaderRowItem
+          item
+          mobile={5}
+          sx={{ justifyContent: 'start', paddingLeft: '4px' }}
+        >
           <Typography variant='h3'>{type}</Typography>
         </HeaderRowItem>
         {stats.map((stat, index) => (
@@ -66,7 +70,11 @@ export const WeaponTable: React.FC<{
                 }}
                 mobile={1}
               />
-              <TableRowItem item mobile={5} sx={{ justifyContent: 'start' }}>
+              <TableRowItem
+                item
+                mobile={5}
+                sx={{ justifyContent: 'start', paddingLeft: '4px' }}
+              >
                 <Typography>{weapon.name}</Typography>
               </TableRowItem>
               {stats.map((stat, index) => (

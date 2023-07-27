@@ -13,13 +13,20 @@ import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
 import React from 'react';
 
 export function FactionIndexTable() {
-  const { allUnitsData } = React.useContext(UnitDataContext);
+  const { allUnitsData, setSelectedUnit } = React.useContext(UnitDataContext);
+
+  const handleRowClick = (selectedId) => () => {
+    setSelectedUnit(selectedId);
+  };
 
   return (
     <Table>
       <TableBody>
         {allUnitsData.map((unit: Unit) => (
-          <TableRow>
+          <TableRow
+            onClick={handleRowClick(unit.id)}
+            sx={{ cursor: 'pointer' }}
+          >
             <TableCell>{unit.name}</TableCell>
             <TableCell>{unit.points[0].points}</TableCell>
           </TableRow>
@@ -30,15 +37,18 @@ export function FactionIndexTable() {
 }
 
 export function FactionIndexMenu({ onClick }) {
-  const { allUnitsData } = React.useContext(UnitDataContext);
+  const { allUnitsData, setSelectedUnit } = React.useContext(UnitDataContext);
 
-  console.log(allUnitsData);
+  const handleClick = (selectedId) => () => {
+    setSelectedUnit(selectedId);
+    onClick();
+  };
+
   return (
     <>
       {allUnitsData.map((unit: Unit) => (
-        <MenuItem onClick={onClick}>
+        <MenuItem onClick={handleClick(unit.id)}>
           <Typography>{unit.name}</Typography>
-          {/* <Typography>{unit.points[0].points}</Typography> */}
         </MenuItem>
       ))}
     </>

@@ -1,13 +1,23 @@
 'use client';
 import { Box, Grid, Paper, Typography, useTheme } from '@mui/material';
-import React from 'react';
+import React, { useRef } from 'react';
 import { Unit, RangedStats, MeleeStats, WeaponType } from '../../models/Unit';
 import { UnitStatDisplay } from './components/UnitStatDisplay';
 import { DARKER_GREY, DARK_GREY } from '../../styles/CustomTheme';
 import { WeaponTable } from './components/WeaponsTable';
+import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
 
 const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
+  const { selectedUnit } = React.useContext(UnitDataContext);
   const theme = useTheme();
+  const ref = useRef(null);
+
+  React.useEffect(() => {
+    if (selectedUnit === unit.id) {
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [selectedUnit]);
+
   return (
     <Paper
       sx={{
@@ -16,6 +26,7 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
         overflow: 'auto',
       }}
       elevation={5}
+      ref={ref}
     >
       <Grid
         container
