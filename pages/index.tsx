@@ -70,7 +70,7 @@ export default function Home({ allUnitsData }) {
                   <Box
                     overflow='auto'
                     sx={{ display: { mobile: 'none', desktop: 'block' } }}
-                    minWidth='200px'
+                    minWidth='250px'
                   >
                     <RosterTable />
                   </Box>

@@ -8,24 +8,35 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import { Unit } from '../../models/Unit';
+import { RosterUnit, Unit } from '../../models/Unit';
 import React from 'react';
 import { RosterDataContext } from '../RosterDataProvider/RosterDataContext';
+import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
 
 export function RosterTable() {
-  const { units } = React.useContext(RosterDataContext);
+  const { rosterUnits } = React.useContext(RosterDataContext);
+  const { setSelectedUnit } = React.useContext(UnitDataContext);
 
-  if (units.length === 0) {
+  const handleRowClick = (selectedId) => () => {
+    setSelectedUnit(selectedId);
+  };
+
+  if (rosterUnits.length === 0) {
     return <Typography variant='body1'>Your roster is empty!</Typography>;
   }
 
   return (
     <Table>
       <TableBody>
-        {units.map((unit: Unit) => (
-          <TableRow sx={{ cursor: 'pointer' }}>
-            <TableCell>{unit.name}</TableCell>
-            <TableCell>{unit.points[0].points}</TableCell>
+        {rosterUnits.map((rosterUnit: RosterUnit) => (
+          <TableRow
+            onClick={handleRowClick(rosterUnit.unit.id)}
+            sx={{ cursor: 'pointer' }}
+          >
+            <TableCell>{rosterUnit.unit.name}</TableCell>
+            <TableCell>
+              {rosterUnit.count} x {rosterUnit.unit.points[0].points}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -34,16 +45,23 @@ export function RosterTable() {
 }
 
 export function RosterMenu({ onClick }) {
-  const { units } = React.useContext(RosterDataContext);
-  if (units.length === 0) {
+  const { rosterUnits: rosterUnits } = React.useContext(RosterDataContext);
+  const { setSelectedUnit } = React.useContext(UnitDataContext);
+
+  const handleClick = (selectedId) => () => {
+    setSelectedUnit(selectedId);
+    onClick();
+  };
+
+  if (rosterUnits.length === 0) {
     return <MenuItem>Your roster is empty!</MenuItem>;
   }
 
   return (
     <>
-      {units.map((unit: Unit) => (
-        <MenuItem>
-          <Typography>{unit.name}</Typography>
+      {rosterUnits.map((rosterUnit: RosterUnit) => (
+        <MenuItem onClick={handleClick(rosterUnit.unit.id)}>
+          <Typography>{`${rosterUnit.unit.name} x ${rosterUnit.count}`}</Typography>
         </MenuItem>
       ))}
     </>

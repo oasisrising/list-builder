@@ -6,13 +6,16 @@ import React from 'react';
 import _ from 'lodash';
 
 export const RosterTotalDisplay: React.FC = () => {
-  const { units } = React.useContext(RosterDataContext);
+  const { rosterUnits, unitCount } = React.useContext(RosterDataContext);
   const [totalPoints, setTotalPoints] = React.useState(0);
 
   React.useEffect(() => {
-    const points = _.sumBy(units, (unit) => unit.points[0].points);
+    const points = _.sumBy(
+      rosterUnits,
+      (rosterUnit) => rosterUnit.unit.points[0].points * rosterUnit.count
+    );
     setTotalPoints(points);
-  }, [units]);
+  }, [unitCount, rosterUnits]);
 
   return (
     <Typography variant='h3'>{`Total roster points: ${totalPoints}`}</Typography>

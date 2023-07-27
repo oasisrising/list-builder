@@ -29,6 +29,11 @@ export interface UnitPointsData {
   points: number;
 }
 
+export interface RosterUnit {
+  unit: Unit;
+  count: number;
+}
+
 // export const getUnit = (): Unit => {
 //   return {
 //     name: 'Kaldor Draigo',

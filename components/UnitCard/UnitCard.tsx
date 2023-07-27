@@ -13,13 +13,17 @@ import { UnitStatDisplay } from './components/UnitStatDisplay';
 import { DARKER_GREY, DARK_GREY } from '../../styles/CustomTheme';
 import { WeaponTable } from './components/WeaponsTable';
 import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
-import { AddCircle } from '@mui/icons-material';
+import { AddCircle, RemoveCircle } from '@mui/icons-material';
 import { StyledTooltip as Tooltip } from '../StyledTooltip';
 import { RosterDataContext } from '../RosterDataProvider/RosterDataContext';
+import _, { set } from 'lodash';
 
 const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
   const { selectedUnit } = React.useContext(UnitDataContext);
-  const { addUnit } = React.useContext(RosterDataContext);
+  const { addUnit, removeUnit, rosterUnits, unitCount } =
+    React.useContext(RosterDataContext);
+  const [countInRoster, setCountInRoster] = React.useState(0);
+
   const theme = useTheme();
   const ref = useRef(null);
 
@@ -29,8 +33,21 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
     }
   }, [selectedUnit]);
 
+  React.useEffect(() => {
+    const rosterUnit = _.find(
+      rosterUnits,
+      (unitRosterItem) => unitRosterItem.unit.id === unit.id
+    );
+
+    setCountInRoster(rosterUnit?.count ?? 0);
+  }, [rosterUnits, unitCount]);
+
   const handleAddToRoster = () => {
     addUnit(unit);
+  };
+
+  const handleRemoveFromRoster = () => {
+    removeUnit(unit);
   };
 
   return (
@@ -70,6 +87,22 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
                   <AddCircle />
                 </IconButton>
               </Tooltip>
+              {Boolean(countInRoster) && (
+                <>
+                  <Typography variant='body1' color='secondary'>
+                    {`x ${countInRoster}`}
+                  </Typography>
+                  <Tooltip title='Remove from roster'>
+                    <IconButton
+                      aria-lable='Remove from roster'
+                      color='secondary'
+                      onClick={handleRemoveFromRoster}
+                    >
+                      <RemoveCircle />
+                    </IconButton>
+                  </Tooltip>
+                </>
+              )}
             </Box>
           ))}
         </Grid>
