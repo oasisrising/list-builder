@@ -32,6 +32,7 @@ export function RosterTable() {
           <TableRow
             onClick={handleRowClick(rosterUnit.unit.id)}
             sx={{ cursor: 'pointer' }}
+            key={rosterUnit.unit.id}
           >
             <TableCell>{rosterUnit.unit.name}</TableCell>
             <TableCell>

@@ -59,6 +59,7 @@ export const WeaponTable: React.FC<{
                   display: { mobile: 'none', desktop: 'block' },
                 }}
                 mobile={1}
+                key={weapon.name}
               />
               <TableRowItem
                 item

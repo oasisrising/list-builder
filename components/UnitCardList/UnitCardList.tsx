@@ -4,6 +4,7 @@ import React from 'react';
 import { Unit } from '../../models/Unit';
 import UnitCard from '../UnitCard/UnitCard';
 import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
+import { Box } from '@mui/material';
 
 export function UnitCardList() {
   const { allUnitsData } = React.useContext(UnitDataContext);
@@ -11,7 +12,9 @@ export function UnitCardList() {
   return (
     <>
       {allUnitsData.map((unit: Unit) => (
-        <UnitCard unit={unit} key={unit.id} />
+        <Box key={unit.id}>
+          <UnitCard unit={unit} />
+        </Box>
       ))}
     </>
   );

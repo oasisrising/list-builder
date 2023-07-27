@@ -26,6 +26,7 @@ export function FactionIndexTable() {
           <TableRow
             onClick={handleRowClick(unit.id)}
             sx={{ cursor: 'pointer' }}
+            key={unit.id}
           >
             <TableCell>{unit.name}</TableCell>
             <TableCell>{unit.points[0].points}</TableCell>

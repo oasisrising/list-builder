@@ -72,7 +72,12 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
         </Grid>
         <Grid item mobile={12} desktop={4}>
           {unit.points.map((points) => (
-            <Box display='flex' justifyContent='left' alignItems='center'>
+            <Box
+              display='flex'
+              justifyContent='left'
+              alignItems='center'
+              key={`${unit.id} ${points.points}`}
+            >
               <Typography variant='body1' color='white'>
                 {`${points.modelCount} model${
                   points.modelCount > 1 ? 's' : ''
@@ -80,7 +85,7 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
               </Typography>
               <Tooltip title='Add to roster'>
                 <IconButton
-                  aria-lable='add to roster'
+                  aria-label='add to roster'
                   color='secondary'
                   onClick={handleAddToRoster}
                 >
@@ -94,7 +99,7 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
                   </Typography>
                   <Tooltip title='Remove from roster'>
                     <IconButton
-                      aria-lable='Remove from roster'
+                      aria-label='Remove from roster'
                       color='secondary'
                       onClick={handleRemoveFromRoster}
                     >
