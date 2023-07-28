@@ -16,11 +16,10 @@ import RosterDataProvider from '../components/RosterDataProvider/RosterDataConte
 import { RosterTotalDisplay } from '../components/RosterTotalDisplay/RosterTotalDisplay';
 
 export async function getStaticProps() {
-  const allUnitsData = getSortedUnitsData();
-  getSortedUnitsData();
+  const allFactionsData = getSortedUnitsData();
   return {
     props: {
-      allUnitsData,
+      allUnitsData: allFactionsData[0].units,
     },
   };
 }
@@ -57,19 +56,25 @@ export default function Home({ allUnitsData }) {
               </AppBar>
               <Box display='flex' flexDirection='column' height='100vh'>
                 <Toolbar />
-                <Box flexGrow={1} display='flex' overflow='hidden'>
+                <Box
+                  flexGrow={1}
+                  display='flex'
+                  overflow='hidden'
+                  justifyContent='space-between'
+                >
                   <Box
                     overflow='auto'
-                    sx={{ display: { mobile: 'none', desktop: 'block' } }}
+                    sx={{ display: { mobile: 'none', laptop: 'block' } }}
+                    minWidth='250px'
                   >
                     <FactionIndexTable />
                   </Box>
-                  <Box overflow='auto'>
+                  <Box overflow='auto' width='100%'>
                     <UnitCardList />
                   </Box>
                   <Box
                     overflow='auto'
-                    sx={{ display: { mobile: 'none', desktop: 'block' } }}
+                    sx={{ display: { mobile: 'none', laptop: 'block' } }}
                     minWidth='250px'
                   >
                     <RosterTable />

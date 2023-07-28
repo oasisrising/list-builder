@@ -1,0 +1,49 @@
+GRAND MASTER
+KEYWORDS: Infantry, Character, Psyker, Grenades, Terminator, Imperium,
+Grand Master
+RANGED WEAPONS RANGE A BS S AP D
+Incinerator [IGNORES COVER, TORRENT] 12" D6 N/A 6 -1 1
+Psilencer [PSYCHIC, SUSTAINED HITS 1] 24" 6 2+ 5 0 1
+Psycannon [PSYCHIC] 24" 3 2+ 8 -1 2
+Storm bolter [RAPID FIRE 2] 24" 2 2+ 4 0 1
+MELEE WEAPONS RANGE A WS S AP D
+Nemesis force weapon [PSYCHIC] Melee 5 2+ 6 -2 2
+FACTION KEYWORDS:
+Grey Knights
+ABILITIES
+CORE: Deep Strike, Leader
+FACTION: Teleport Assault
+Might of Purity (Psychic): While this model is leading a unit,
+you can ignore any or all modifiers to the characteristics of
+models in that unit and to any roll or test made for models in
+that unit (excluding modifiers to saving throws).
+Master Strategist: Once per battle, one unit from your army
+with this ability can be targeted by a Stratagem for 0CP, even
+if another unit from your army has already been targeted by
+that Stratagem this phase.
+INVULNERABLE SAVE 4+
+M T SV W LD OC
+5" 5 2+ 7 6+ 1
+WARGEAR OPTIONS
+■ This model’s storm bolter can be replaced with one of the following:
+◦ 1 incinerator
+◦ 1 psilencer
+◦ 1 psycannon
+UNIT COMPOSITION
+■ 1 Grand Master
+This model is equipped with: storm bolter;
+Nemesis force weapon.
+LEADER
+This model can be attached to the following units:
+■ Brotherhood Terminator Squad
+■ Paladin Squad
+GRAND MASTER
+Grand Masters lead the Grey Knights brotherhoods. Each is a master
+strategist, a deadly warrior and a terrifying battle-psyker possessed
+of unhallowed knowledge. Under a Grand Master’s guiding will are the
+unending wars against their daemonic adversaries prosecuted, their
+stainless souls a beacon of purity.
+KEYWORDS: Infantry, Character, Psyker, Grenades, Terminator, Imperium,
+Grand Master
+FACTION KEYWORDS:
+Grey Knights

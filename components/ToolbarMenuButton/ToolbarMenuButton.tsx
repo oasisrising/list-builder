@@ -19,14 +19,14 @@ export default function ToolbarMenuButton({ MenuItems, title }) {
     <>
       <Typography
         variant='h3'
-        sx={{ display: { mobile: 'none', desktop: 'block' } }}
+        sx={{ display: { mobile: 'none', laptop: 'block' } }}
       >
         {title}
       </Typography>
       <StyledTooltip title={title}>
         <IconButton
           color='secondary'
-          sx={{ display: { mobile: 'block', desktop: 'none' } }}
+          sx={{ display: { mobile: 'block', laptop: 'none' } }}
           onClick={handleClick}
           aria-label={title}
         >
