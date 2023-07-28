@@ -8,3 +8,8 @@ To deploy to heroku:
 `git push heroku main`
 
 done!
+
+To run locally:
+`npm i`
+`npm run dev`
+view the app at `http://localhost:3000/`
