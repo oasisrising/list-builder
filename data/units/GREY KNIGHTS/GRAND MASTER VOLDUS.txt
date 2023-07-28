@@ -1,0 +1,42 @@
+GRAND MASTER VOLDUS
+KEYWORDS: Infantry, Character, Epic Hero, Psyker, Terminator, Imperium,
+Grand Master Voldus
+RANGED WEAPONS RANGE A BS S AP D
+Storm bolter [RAPID FIRE 2] 24" 2 2+ 4 0 1
+MELEE WEAPONS RANGE A WS S AP D
+Malleus Argyrum [PSYCHIC] Melee 5 2+ 10 -2 3
+FACTION KEYWORDS:
+Grey Knights
+ABILITIES
+CORE: Deep Strike, Leader
+FACTION: Teleport Assault
+Sanctuary (Psychic): While this model is leading a unit, each
+time an attack targets that unit, subtract 1 from the Hit roll.
+Hammer Aflame (Psychic): Each time this model’s unit
+is selected to fight, you can select one enemy unit within
+Engagement Range of this model’s unit and roll one D6,
+adding 2 to the result if that unit has the Daemon keyword: on
+a 4-5, that enemy unit suffers D3 mortal wounds; on a 6+, that
+enemy unit suffers D3+3 mortal wounds.
+INVULNERABLE SAVE 4+
+M T SV W LD OC
+5" 5 2+ 6 6+ 1
+WARGEAR OPTIONS
+■ None
+UNIT COMPOSITION
+■ 1 Grand Master Voldus – Epic Hero
+This model is equipped with: storm bolter; Malleus Argyrum.
+LEADER
+This model can be attached to the following units:
+■ Brotherhood Terminator Squad
+■ Paladin Squad
+GRAND MASTER VOLDUS
+Grand Master of the 3rd Brotherhood, Aldrik Voldus wields immense
+psychic might with a humble purity. Daemons burn and scatter before
+the purifying fire that pours from his huge daemon hammer, the
+Malleus Argyrum, before he deftly swings it and crushes those that
+remain with a thunderous crash of pure empyric energies.
+KEYWORDS: Infantry, Character, Epic Hero, Psyker, Terminator, Imperium,
+Grand Master Voldus
+FACTION KEYWORDS:
+Grey Knights
