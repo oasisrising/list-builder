@@ -1,0 +1,42 @@
+STRIKE SQUAD
+KEYWORDS: Infantry, Battleline, Psyker, Grenades, Imperium, Strike Squad
+RANGED WEAPONS RANGE A BS S AP D
+Incinerator [IGNORES COVER, TORRENT] 12" D6 N/A 6 -1 1
+Psilencer [PSYCHIC, SUSTAINED HITS 1] 24" 6 3+ 5 0 1
+Psycannon [PSYCHIC] 24" 3 3+ 8 -1 2
+Storm bolter [RAPID FIRE 2] 24" 2 3+ 4 0 1
+MELEE WEAPONS RANGE A WS S AP D
+Close combat weapon Melee 3 3+ 4 0 1
+Nemesis force weapon [PSYCHIC] Melee 3 3+ 6 -2 2
+FACTION KEYWORDS:
+Grey Knights
+ABILITIES
+CORE: Deep Strike, Scouts 6"
+FACTION: Teleport Assault
+Sanctifying Ritual (Psychic): If you control an objective
+marker at the end of your Command phase and this unit is
+within range of that objective marker, that objective marker
+remains under you control, even if you have no models within
+range of it, until your opponent controls it at the start or end
+of any turn.
+M T SV W LD OC
+6" 4 2+ 2 6+ 2
+WARGEAR OPTIONS
+■ For every 5 models in this unit, 1 Grey Knight’s storm bolter and Nemesis force weapon can be
+replaced with one of the following:
+◦ 1 incinerator and 1 close combat weapon
+◦ 1 psilencer and 1 close combat weapon
+◦ 1 psycannon and 1 close combat weapon
+UNIT COMPOSITION
+■ 1 Justicar
+■ 4-9 Grey Knights
+Every model is equipped with: storm bolter;
+Nemesis force weapon.
+STRIKE SQUAD
+Strike Squads often form a vanguard, striking swiftly and slipping
+through gaps in daemonic lines to seal warp portals or prevent
+summoners escaping. Frequently attacking from fixed teleportariums
+or rapid transports, they conduct vital reconnaissance, disrupt flanks
+and blunt incursions with surgical strikes.
+KEYWORDS: Infantry, Battleline, Psyker, Grenades, Imperium, Strike Squad FACTION KEYWORDS:
+Grey Knights

@@ -1,0 +1,40 @@
+GREY KNIGHTS STORMHAWK INTERCEPTOR
+KEYWORDS: Vehicle, Aircraft, Fly, Smoke, Imperium, Stormhawk Interceptor
+RANGED WEAPONS RANGE A BS S AP D
+Icarus stormcannon [ANTI-FLY 2+] 48" 6 3+ 7 -1 2
+Las-talon 24" 2 3+ 10 -3 D6+1
+Skyhammer missile launcher [ANTI-FLY 2+] 48" 3 3+ 8 -1 D3
+Twin assault cannon
+[DEVASTATING WOUNDS, TWIN-LINKED]
+24" 6 3+ 6 0 1
+Twin heavy bolter [SUSTAINED HITS 1, TWIN-LINKED] 36" 3 3+ 5 -1 2
+Typhoon missile launcher – frag [BLAST] 48" 2D6 3+ 4 0 1
+Typhoon missile launcher – krak 48" 2 3+ 9 -2 D6
+MELEE WEAPONS RANGE A WS S AP D
+Armoured hull Melee 3 4+ 6 0 1
+FACTION KEYWORDS:
+Grey Knights
+ABILITIES
+CORE: Deadly Demise D3, Hover
+Interceptor: Each time this model makes a ranged attack that
+targets a unit that can Fly, add 1 to the Hit roll.
+Before selecting targets for this weapon, select one of its profiles to make attacks with.
+M T SV W LD OC
+20+" 9 3+ 10 6+ 0
+WARGEAR OPTIONS
+■ This model’s las-talon can be replaced with 1 icarus stormcannon.
+■ This model’s skyhammer missile launcher can be replaced with one of the following:
+◦ 1 twin heavy bolter
+◦ 1 typhoon missile launcher
+UNIT COMPOSITION
+■ 1 Stormhawk Interceptor
+This model is equipped with: las-talon; skyhammer missile
+launcher; twin assault cannon; armoured hull.
+GREY KNIGHTS STORMHAWK INTERCEPTOR
+Squadrons of Stormhawk Interceptors – such as the Andaemus
+Flight – operate at lightning-fast speeds even through warptortured
+skies. Designed to achieve aerial supremacy at high altitudes,
+the psychic pilots of these aircraft duel not with blades but with
+batteries of missiles and rapid-firing cannons.
+KEYWORDS: Vehicle, Aircraft, Fly, Smoke, Imperium, Stormhawk Interceptor FACTION KEYWORDS:
+Grey Knights

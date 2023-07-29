@@ -3,6 +3,7 @@ import path from 'path';
 import {
   MeleeStats,
   RangedStats,
+  Stat,
   StatType,
   Unit,
   UnitPointsData,
@@ -15,6 +16,107 @@ import _ from 'lodash';
 const unitsDirectory = path.join(process.cwd(), 'data/units');
 const UnitStatTypes = ['M', 'T', 'SV', 'W', 'LD', 'OC'];
 const STAT_COUNT = 6;
+
+export const RANGED_WEAPON_IDENTIFIER = 'RANGED WEAPONS RANGE A BS S AP D';
+export const MELEE_WEAPON_IDENTIFIER = 'MELEE WEAPONS RANGE A WS S AP D';
+export const FACTION_IDENTIFIER = 'FACTION KEYWORDS:';
+export const STAT_LINE_IDENTIFIER = 'M T SV W LD OC';
+
+export function getName(lines: string[], lineIndex: number) {
+  return {
+    name: lines[lineIndex],
+    nextLineIndex: lineIndex + 1,
+  };
+}
+
+export function getKeywords(lines: string[], lineIndex: number) {
+  let keywords = '';
+  let nextLineIndex = lineIndex;
+  while (lines[nextLineIndex] !== RANGED_WEAPON_IDENTIFIER) {
+    keywords = keywords.concat(lines[nextLineIndex]);
+    nextLineIndex++;
+  }
+  return {
+    keywords,
+    nextLineIndex,
+  };
+}
+
+export function getWeapons(lines: string[], lineIndex: number) {
+  let nextLineIndex = lineIndex;
+  let weapons: WeaponStat[] = [];
+  while (lines[nextLineIndex] !== 'FACTION KEYWORDS:') {
+    if (
+      lines[nextLineIndex] !== 'RANGED WEAPONS RANGE A BS S AP D' &&
+      lines[nextLineIndex] !== 'MELEE WEAPONS RANGE A WS S AP D'
+    ) {
+      let name = '';
+      let stats = [];
+      let specialRules = [];
+
+      // are the stats on a different lines?
+      if (lines[nextLineIndex + 1][0] === '[') {
+        name = lines[nextLineIndex];
+        nextLineIndex++;
+        specialRules = lines[nextLineIndex]
+          .replace('[', '')
+          .replace(']', '')
+          .split(', ');
+        nextLineIndex++;
+        stats = lines[nextLineIndex].split(' ');
+      } else {
+        let weaponLineParts = lines[nextLineIndex].split(' ');
+
+        stats = weaponLineParts.slice(
+          weaponLineParts.length - STAT_COUNT,
+          weaponLineParts.length
+        );
+
+        weaponLineParts = _.difference(weaponLineParts, stats);
+        const weaponNameAndSpecialRules = weaponLineParts.join(' ');
+
+        weaponLineParts = weaponNameAndSpecialRules.split(/[\[\]]/);
+
+        (specialRules = weaponLineParts.length > 1 ? [weaponLineParts[1]] : []),
+          (name = weaponLineParts[0].trim());
+      }
+
+      const isMelee = stats[0] === 'Melee';
+      const weaponStatTypes = isMelee ? MeleeStats : RangedStats;
+      weapons.push({
+        name,
+        specialRules,
+        weaponStats: stats.map((value, index) => {
+          return {
+            type: weaponStatTypes[index],
+            value,
+          };
+        }),
+        weaponType: isMelee ? WeaponType.Melee : WeaponType.Ranged,
+      });
+    }
+    nextLineIndex++;
+  }
+  return {
+    weapons,
+    nextLineIndex,
+  };
+}
+
+export function getStats(lines: string[]) {
+  let unitStats: Stat[] = [];
+  let nextLineIndex = lines.findIndex((line) => line === STAT_LINE_IDENTIFIER);
+  if (nextLineIndex >= 0) {
+    nextLineIndex++;
+  }
+  unitStats = lines[nextLineIndex].split(' ').map((value, index) => {
+    return {
+      type: UnitStatTypes[index] as StatType,
+      value,
+    };
+  });
+  return { unitStats };
+}
 
 export function getSortedUnitsData(): Faction[] {
   const factionDirectories = fs.readdirSync(unitsDirectory);
@@ -35,85 +137,29 @@ export function getSortedUnitsData(): Faction[] {
       const lines = fileContents.split('\n');
 
       let lineIndex = 0;
-      const name = lines[lineIndex];
-      lineIndex++;
+      let result: any = getName(lines, lineIndex);
+      const name = result.name;
+      lineIndex = result.nextLineIndex;
 
       //parse keywords
-      let keywords = '';
-      while (lines[lineIndex] !== 'RANGED WEAPONS RANGE A BS S AP D') {
-        keywords = keywords.concat(lines[lineIndex]);
-        lineIndex++;
-      }
+      result = getKeywords(lines, lineIndex);
+      const keywords = result.keywords;
+      lineIndex = result.nextLineIndex;
 
       // parse weapons
-      let weapons: WeaponStat[] = [];
-      while (lines[lineIndex] !== 'FACTION KEYWORDS:') {
-        if (
-          lines[lineIndex] !== 'RANGED WEAPONS RANGE A BS S AP D' &&
-          lines[lineIndex] !== 'MELEE WEAPONS RANGE A WS S AP D'
-        ) {
-          let name = '';
-          let stats = [];
-          let specialRules = [];
-
-          // are the stats on a different lines?
-          if (lines[lineIndex + 1][0] === '[') {
-            name = lines[lineIndex];
-            lineIndex++;
-            specialRules = [lines[lineIndex]];
-            lineIndex++;
-            stats = lines[lineIndex].split(' ');
-          } else {
-            let weaponLineParts = lines[lineIndex].split(' ');
-
-            stats = weaponLineParts.slice(
-              weaponLineParts.length - STAT_COUNT,
-              weaponLineParts.length
-            );
-
-            weaponLineParts = _.difference(weaponLineParts, stats);
-            const weaponNameAndSpecialRules = weaponLineParts.join(' ');
-
-            weaponLineParts = weaponNameAndSpecialRules.split(/[\[\]]/);
-
-            (specialRules =
-              weaponLineParts.length > 1 ? [weaponLineParts[1]] : []),
-              (name = weaponLineParts[0].trim());
-          }
-
-          const isMelee = stats[0] === 'Melee';
-          const weaponStatTypes = isMelee ? MeleeStats : RangedStats;
-          weapons.push({
-            name,
-            specialRules,
-            weaponStats: stats.map((value, index) => {
-              return {
-                type: weaponStatTypes[index],
-                value,
-              };
-            }),
-            weaponType: isMelee ? WeaponType.Melee : WeaponType.Ranged,
-          });
-        }
-        lineIndex++;
-      }
+      result = getWeapons(lines, lineIndex);
+      const weapons = result.weapons;
+      lineIndex = result.nextLineIndex;
 
       // advance to unit stats
-      let statLineIndex = lines.findIndex((line) => line === 'M T SV W LD OC');
-      if (statLineIndex >= 0) {
-        statLineIndex++;
-      }
+      const { unitStats } = getStats(lines);
+
       return {
         id: unitId,
-        name: name,
+        name,
         points: pointsData.filter((data) => data.id === unitId),
-        unitStats: lines[statLineIndex].split(' ').map((value, index) => {
-          return {
-            type: UnitStatTypes[index] as StatType,
-            value,
-          };
-        }),
-        weapons: weapons,
+        unitStats,
+        weapons,
       };
     });
     return { id: factionId, units: allUnitsData };

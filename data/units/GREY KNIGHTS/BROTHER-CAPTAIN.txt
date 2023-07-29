@@ -1,0 +1,46 @@
+BROTHER-CAPTAIN
+KEYWORDS: Infantry, Character, Psyker, Terminator, Imperium,
+Brother-Captain
+RANGED WEAPONS RANGE A BS S AP D
+Incinerator [IGNORES COVER, TORRENT] 12" D6 N/A 6 -1 1
+Psilencer [PSYCHIC, SUSTAINED HITS 1] 24" 6 2+ 5 0 1
+Psycannon [PSYCHIC] 24" 3 2+ 8 -1 2
+Storm bolter [RAPID FIRE 2] 24" 2 2+ 4 0 1
+MELEE WEAPONS RANGE A WS S AP D
+Nemesis force weapon [PSYCHIC] Melee 4 2+ 6 -2 2
+FACTION KEYWORDS:
+Grey Knights
+ABILITIES
+CORE: Deep Strike, Leader
+FACTION: Teleport Assault
+Empyric Amplification (Psychic): While this model is leading
+a unit, Psychic weapons equipped by models in that unit have
+the [SUSTAINED HITS 1] ability.
+Focused Mind (Psychic): Each time this model makes an
+attack with a Psychic weapon, you can re-roll the Wound roll.
+INVULNERABLE SAVE 4+
+M T SV W LD OC
+5" 5 2+ 6 6+ 1
+WARGEAR OPTIONS
+■ This model’s storm bolter can be replaced with one of the following:
+◦ 1 incinerator
+◦ 1 psilencer
+◦ 1 psycannon
+UNIT COMPOSITION
+■ 1 Brother-Captain
+This model is equipped with: storm bolter;
+Nemesis force weapon.
+LEADER
+This model can be attached to the following units:
+■ Brotherhood Terminator Squad
+■ Paladin Squad
+BROTHER-CAPTAIN
+Amongst the Chapter’s foremost combatants, a Brother-Captain
+has proven his worth as a leader of great warriors and a martial
+exemplar. His place is at the heart of the fight, standing beside
+his battle-brothers and focusing their blows by means of psychic
+communion even amidst the din of hellish war.
+KEYWORDS: Infantry, Character, Psyker, Terminator, Imperium,
+Brother-Captain
+FACTION KEYWORDS:
+Grey Knights

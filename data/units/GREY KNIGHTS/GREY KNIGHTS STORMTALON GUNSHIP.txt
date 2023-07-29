@@ -1,0 +1,39 @@
+GREY KNIGHTS STORMTALON GUNSHIP
+KEYWORDS: Vehicle, Aircraft, Fly, Imperium, Stormtalon Gunship
+RANGED WEAPONS RANGE A BS S AP D
+Skyhammer missile launcher [ANTI-FLY 2+] 48" 3 3+ 8 -1 D3
+Twin assault cannon
+[DEVASTATING WOUNDS, TWIN-LINKED]
+24" 6 3+ 6 0 1
+Twin heavy bolter [SUSTAINED HITS 1, TWIN-LINKED] 36" 3 3+ 5 -1 2
+Twin lascannon [TWIN-LINKED] 48" 1 3+ 12 -3 D6+1
+Typhoon missile launcher – frag [BLAST] 48" 2D6 3+ 4 0 1
+Typhoon missile launcher – krak 48" 2 3+ 9 -2 D6
+MELEE WEAPONS RANGE A WS S AP D
+Armoured hull Melee 3 4+ 6 0 1
+FACTION KEYWORDS:
+Grey Knights
+ABILITIES
+CORE: Deadly Demise D3, Hover
+Strafing Run: Each time this model makes a ranged attack
+that targets a unit that cannot Fly, add 1 to the Hit roll.
+Before selecting targets for this weapon, select one of its profiles to make attacks with.
+M T SV W LD OC
+20+" 8 3+ 10 6+ 0
+WARGEAR OPTIONS
+■ This model’s skyhammer missile launcher can be replaced with one of the following:
+◦ 1 twin heavy bolter
+◦ 1 twin lascannon
+◦ 1 typhoon missile launcher
+UNIT COMPOSITION
+■ 1 Stormtalon Gunship
+This model is equipped with: skyhammer missile launcher;
+twin assault cannon; armoured hull.
+GREY KNIGHTS STORMTALON GUNSHIP
+Stormtalon Gunships are highly manoeuvrable aircraft as versatile
+in role as in their choice of target. Often running escort duties for
+larger craft, they hunt down warp-spawned foes. Using vectored
+afterburners, their pilots unleash ground attacks, saturating
+teleportation zones with fire and clearing them for their brothers.
+KEYWORDS: Vehicle, Aircraft, Fly, Imperium, Stormtalon Gunship FACTION KEYWORDS:
+Grey Knights

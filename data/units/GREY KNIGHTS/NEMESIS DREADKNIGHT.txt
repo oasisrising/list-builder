@@ -1,0 +1,45 @@
+NEMESIS DREADKNIGHT
+KEYWORDS: Vehicle, Walker, Psyker, Imperium, Nemesis Dreadknight
+RANGED WEAPONS RANGE A BS S AP D
+Gatling psilencer [PSYCHIC, SUSTAINED HITS 1] 24" 12 3+ 6 0 1
+Heavy incinerator [IGNORES COVER, TORRENT] 18" 2D6 N/A 6 -1 1
+Heavy psycannon [PSYCHIC] 24" 6 3+ 10 -1 3
+MELEE WEAPONS RANGE A WS S AP D
+Dreadfists Melee 6 3+ 6 -1 1
+Nemesis daemon greathammer [PSYCHIC] Melee 5 4+ 14 -3 D6+1
+Nemesis greatsword – strike [PSYCHIC] Melee 5 3+ 10 -2 D6
+Nemesis greatsword – sweep [PSYCHIC] Melee 10 3+ 5 -1 1
+FACTION KEYWORDS:
+Grey Knights
+ABILITIES
+CORE: Deadly Demise D3, Deep Strike
+FACTION: Teleport Assault
+Empyric Reprisal (Psychic): This model is eligible to shoot
+and declare a charge in a turn in which it Advanced or
+Fell Back.
+DAMAGED: 1-4 WOUNDS REMAINING
+While this model has 1-4 wounds remaining, each time this
+model makes an attack, subtract 1 from the Hit roll.
+INVULNERABLE SAVE 4+
+M T SV W LD OC
+8" 8 2+ 13 6+ 4
+Before selecting targets for this weapon, select one of its profiles to make attacks with.
+WARGEAR OPTIONS
+■ This model’s dreadfists can be replaced with one of the following:
+◦ 1 Nemesis daemon greathammer
+◦ 1 Nemesis greatsword
+■ This model can be equipped with up to two of the following, but cannot take duplicates:
+◦ 1 gatling psilencer
+◦ 1 heavy incinerator
+◦ 1 heavy psycannon
+UNIT COMPOSITION
+■ 1 Nemesis Dreadknight
+This model is equipped with: dreadfists.
+NEMESIS DREADKNIGHT
+The pilot of a Nemesis Dreadknight commands a towering exoskeleton
+armoured in thrice-blessed bonded ceramite. Powered by his psychic
+might, its heavy weapons scythe through warp-spawned hordes, while
+with giant fists or enlarged force weapons it smashes daemon-infused
+vehicles and titanic horrors to ruin.
+KEYWORDS: Vehicle, Walker, Psyker, Imperium, Nemesis Dreadknight FACTION KEYWORDS:
+Grey Knights

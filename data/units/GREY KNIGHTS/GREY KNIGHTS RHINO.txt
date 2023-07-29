@@ -1,0 +1,33 @@
+GREY KNIGHTS RHINO
+KEYWORDS: Vehicle, Transport, Dedicated Transport, Smoke, Imperium, Rhino
+RANGED WEAPONS RANGE A BS S AP D
+Hunter-killer missile [ONE SHOT] 48" 1 2+ 14 -3 D6
+One Shot: The bearer can only shoot with this weapon once per battle.
+Storm bolter [RAPID FIRE 2] 24" 2 3+ 4 0 1
+MELEE WEAPONS RANGE A WS S AP D
+Armoured tracks Melee 3 4+ 6 0 1
+FACTION KEYWORDS:
+Grey Knights
+ABILITIES
+CORE: Deadly Demise D3, Firing Deck 2
+Self Repair: At the start of your Command phase, this model
+regains 1 lost wound.
+M T SV W LD OC
+12" 9 3+ 10 6+ 2
+WARGEAR OPTIONS
+■ This model can be equipped with 1 hunter-killer missile.
+■ This model can be equipped with 1 additional storm bolter.
+UNIT COMPOSITION
+■ 1 Rhino
+This model is equipped with: storm bolter; armoured tracks.
+TRANSPORT
+This model has a transport capacity of 12 Grey Knights
+Infantry models. It cannot transport Terminator models.
+GREY KNIGHTS RHINO
+The Rhino is an ancient design of transport that has supported Space
+Marines for millennia. Its rugged and reliable systems are vital for
+surviving the mutating landscapes of daemon worlds the Grey Knights
+sometimes fight across, while the warriors inside are shielded by thick
+armour and a warded truesilver mesh.
+KEYWORDS: Vehicle, Transport, Dedicated Transport, Smoke, Imperium, Rhino FACTION KEYWORDS:
+Grey Knights
