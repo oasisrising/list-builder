@@ -4,6 +4,7 @@ export interface Unit {
   unitStats: Stat[];
   points: UnitPointsData[];
   weapons: WeaponStat[];
+  keywords: string[];
 }
 
 export interface Stat {

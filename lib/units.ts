@@ -21,6 +21,7 @@ export const RANGED_WEAPON_IDENTIFIER = 'RANGED WEAPONS RANGE A BS S AP D';
 export const MELEE_WEAPON_IDENTIFIER = 'MELEE WEAPONS RANGE A WS S AP D';
 export const FACTION_IDENTIFIER = 'FACTION KEYWORDS:';
 export const STAT_LINE_IDENTIFIER = 'M T SV W LD OC';
+export const PARTIAL_STAT_LINE_INDENTIFIER = 'T SV W LD OC';
 
 export function getName(lines: string[], lineIndex: number) {
   return {
@@ -48,7 +49,8 @@ export function getWeapons(lines: string[], lineIndex: number) {
   while (lines[nextLineIndex] !== 'FACTION KEYWORDS:') {
     if (
       lines[nextLineIndex] !== 'RANGED WEAPONS RANGE A BS S AP D' &&
-      lines[nextLineIndex] !== 'MELEE WEAPONS RANGE A WS S AP D'
+      lines[nextLineIndex] !== 'MELEE WEAPONS RANGE A WS S AP D' &&
+      !lines[nextLineIndex].match(/One Shot:/)
     ) {
       let name = '';
       let stats = [];
@@ -105,7 +107,10 @@ export function getWeapons(lines: string[], lineIndex: number) {
 
 export function getStats(lines: string[]) {
   let unitStats: Stat[] = [];
-  let nextLineIndex = lines.findIndex((line) => line === STAT_LINE_IDENTIFIER);
+  let nextLineIndex = lines.findIndex(
+    (line) =>
+      line === STAT_LINE_IDENTIFIER || line === PARTIAL_STAT_LINE_INDENTIFIER
+  );
   if (nextLineIndex >= 0) {
     nextLineIndex++;
   }
@@ -160,6 +165,7 @@ export function getSortedUnitsData(): Faction[] {
         points: pointsData.filter((data) => data.id === unitId),
         unitStats,
         weapons,
+        keywords: [],
       };
     });
     return { id: factionId, units: allUnitsData };

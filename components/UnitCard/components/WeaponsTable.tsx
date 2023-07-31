@@ -52,8 +52,8 @@ export const WeaponTable: React.FC<{
         {weapons
           .filter((weapon) => weapon.weaponType === type)
           .map((weapon) => (
-            <>
-              <TableRowItem
+            <TableRowItem mobile={12} container>
+              <Grid
                 item
                 sx={{
                   display: { mobile: 'none', desktop: 'block' },
@@ -61,20 +61,19 @@ export const WeaponTable: React.FC<{
                 mobile={1}
                 key={weapon.name}
               />
-              <TableRowItem
+              <Grid
                 item
                 mobile={5}
-                sx={{ justifyContent: 'start', paddingLeft: '4px' }}
+                desktop={4}
+                sx={{
+                  justifyContent: 'start',
+                  paddingLeft: '4px',
+                }}
               >
                 <Typography>{weapon.name}</Typography>
-              </TableRowItem>
+              </Grid>
               {stats.map((stat, index) => (
-                <TableRowItem
-                  key={stat}
-                  item
-                  mobile={index === 0 ? 2 : 1}
-                  desktop={1}
-                >
+                <Grid key={stat} item mobile={index === 0 ? 2 : 1}>
                   <Typography>
                     {
                       weapon.weaponStats.find(
@@ -82,9 +81,27 @@ export const WeaponTable: React.FC<{
                       )?.value
                     }
                   </Typography>
-                </TableRowItem>
+                </Grid>
               ))}
-            </>
+              <Grid
+                item
+                mobile={1}
+                sx={{
+                  display: { mobile: 'none', desktop: 'block' },
+                }}
+              />
+              <Grid
+                item
+                mobile={12}
+                desktop={11}
+                sx={{
+                  justifyContent: 'start',
+                  paddingLeft: '4px',
+                }}
+              >
+                <SpecialRulesDisplay specialRules={weapon.specialRules} />
+              </Grid>
+            </TableRowItem>
           ))}
       </Grid>
     </Box>
@@ -106,3 +123,16 @@ const TableRowItem = styled(Grid)({
   justifyContent: 'center',
   alignItems: 'center',
 });
+
+const SpecialRulesDisplay: React.FC<{ specialRules: string[] }> = ({
+  specialRules,
+}) => {
+  if (specialRules.length === 0) {
+    return null;
+  }
+  return (
+    <Typography variant='subtitle2'>{`[${specialRules.join(
+      ', '
+    )}]`}</Typography>
+  );
+};

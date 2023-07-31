@@ -55,6 +55,47 @@ describe('unit parsing tests', () => {
     expect(result.weapons).toContainEqual(expectedWeapon);
   });
 
+  it('should parse ranged weapon of one line', () => {
+    const lines = [
+      RANGED_WEAPON_IDENTIFIER,
+      'Hunter-killer missile [ONE SHOT] 48" 1 2+ 14 -3 D6',
+      'One Shot: The bearer can only shoot with this weapon once per battle.',
+      FACTION_IDENTIFIER,
+    ];
+    const lineIndex = 0;
+    const expectedWeapon: WeaponStat = {
+      name: 'Hunter-killer missile',
+      specialRules: ['ONE SHOT'],
+      weaponStats: [
+        { type: StatType.RANGE, value: '48"' },
+        { type: StatType.A, value: '1' },
+        { type: StatType.BS, value: '2+' },
+        { type: StatType.S, value: '14' },
+        { type: StatType.AP, value: '-3' },
+        { type: StatType.D, value: 'D6' },
+      ],
+      weaponType: WeaponType.Ranged,
+    };
+
+    const notExpectedWeapon: WeaponStat = {
+      name: 'One Shot: The bearer can only shoot',
+      specialRules: [],
+      weaponStats: [
+        { type: StatType.RANGE, value: 'with' },
+        { type: StatType.A, value: 'this' },
+        { type: StatType.BS, value: 'weapon' },
+        { type: StatType.S, value: 'once' },
+        { type: StatType.AP, value: 'per' },
+        { type: StatType.D, value: 'battle.' },
+      ],
+      weaponType: WeaponType.Ranged,
+    };
+
+    const result = getWeapons(lines, lineIndex);
+    expect(result.weapons).toContainEqual(expectedWeapon);
+    expect(result.weapons).not.toContainEqual(notExpectedWeapon);
+  });
+
   it('should parse ranged weapon of one line with no special rules', () => {
     const lines = [
       RANGED_WEAPON_IDENTIFIER,
@@ -113,6 +154,27 @@ describe('unit parsing tests', () => {
       'something else',
       'another line',
       STAT_LINE_IDENTIFIER,
+      '6" 4 2+ 5 6+ 1',
+    ];
+    const expectedStats = [
+      { type: StatType.M, value: '6"' },
+      { type: StatType.T, value: '4' },
+      { type: StatType.SV, value: '2+' },
+      { type: StatType.W, value: '5' },
+      { type: StatType.LD, value: '6+' },
+      { type: StatType.OC, value: '1' },
+    ];
+    const result = getStats(lines);
+
+    expect(result.unitStats).toEqual(expectedStats);
+  });
+
+  it('should parse unit stats with partial stat line indentifier', () => {
+    const lines = [
+      'something',
+      'something else',
+      'another line',
+      'T SV W LD OC',
       '6" 4 2+ 5 6+ 1',
     ];
     const expectedStats = [

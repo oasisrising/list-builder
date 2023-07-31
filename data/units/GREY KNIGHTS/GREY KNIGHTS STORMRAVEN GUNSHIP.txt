@@ -30,8 +30,9 @@ DAMAGED: 1-5 WOUNDS REMAINING
 While this model has 1-5 wounds remaining, each time this
 model makes an attack, subtract 1 from the Hit roll.
 Before selecting targets for this weapon, select one of its profiles to make attacks with.
-M T SV W LD OC
+T SV W LD OC
 20+" 10 3+ 14 6+ 0
+M
 WARGEAR OPTIONS
 ■ This model can be equipped with 2 hurricane bolters.
 ■ This model’s twin assault cannon can be replaced with one of the following:

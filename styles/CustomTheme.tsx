@@ -64,6 +64,13 @@ export const themeOptions: ThemeOptions = {
       color: 'white',
       fontWeight: 800,
     },
+
+    subtitle2: {
+      fontSize: '.75rem',
+      textTransform: 'uppercase',
+      color: DARK_GREY,
+      fontWeight: 400,
+    },
   },
   components: {
     MuiTableBody: {
