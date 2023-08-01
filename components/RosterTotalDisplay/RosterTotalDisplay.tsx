@@ -12,7 +12,7 @@ export const RosterTotalDisplay: React.FC = () => {
   React.useEffect(() => {
     const points = _.sumBy(
       rosterUnits,
-      (rosterUnit) => rosterUnit.unit.points[0].points * rosterUnit.count
+      (rosterUnit) => rosterUnit.points.points
     );
     setTotalPoints(points);
   }, [unitCount, rosterUnits]);

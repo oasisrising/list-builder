@@ -36,13 +36,14 @@ export const WeaponTable: React.FC<{
         <HeaderRowItem
           item
           mobile={5}
+          desktop={4}
           sx={{ justifyContent: 'start', paddingLeft: '4px' }}
         >
           <Typography variant='h3'>{type}</Typography>
         </HeaderRowItem>
         {stats.map((stat, index) => (
           <Tooltip title={statDescriptions[stat]} key={stat}>
-            <HeaderRowItem item mobile={index === 0 ? 2 : 1} desktop={1}>
+            <HeaderRowItem item mobile={index === 0 ? 2 : 1}>
               <Typography variant='h3' textAlign='center'>
                 {stat}
               </Typography>
@@ -52,7 +53,18 @@ export const WeaponTable: React.FC<{
         {weapons
           .filter((weapon) => weapon.weaponType === type)
           .map((weapon) => (
-            <TableRowItem mobile={12} container>
+            <Grid
+              mobile={12}
+              container
+              sx={{
+                borderBottomStyle: 'solid',
+                borderBottomWidth: 'thin',
+                borderBottomColor: DARK_GREY,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
               <Grid
                 item
                 sx={{
@@ -73,7 +85,7 @@ export const WeaponTable: React.FC<{
                 <Typography>{weapon.name}</Typography>
               </Grid>
               {stats.map((stat, index) => (
-                <Grid key={stat} item mobile={index === 0 ? 2 : 1}>
+                <TableRowItem key={stat} item mobile={index === 0 ? 2 : 1}>
                   <Typography>
                     {
                       weapon.weaponStats.find(
@@ -81,7 +93,7 @@ export const WeaponTable: React.FC<{
                       )?.value
                     }
                   </Typography>
-                </Grid>
+                </TableRowItem>
               ))}
               <Grid
                 item
@@ -101,7 +113,7 @@ export const WeaponTable: React.FC<{
               >
                 <SpecialRulesDisplay specialRules={weapon.specialRules} />
               </Grid>
-            </TableRowItem>
+            </Grid>
           ))}
       </Grid>
     </Box>
@@ -116,9 +128,6 @@ const HeaderRowItem = styled(Grid)({
 });
 
 const TableRowItem = styled(Grid)({
-  borderBottomStyle: 'solid',
-  borderBottomWidth: 'thin',
-  borderBottomColor: DARK_GREY,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

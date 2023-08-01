@@ -31,10 +31,16 @@ export function getName(lines: string[], lineIndex: number) {
 }
 
 export function getKeywords(lines: string[], lineIndex: number) {
-  let keywords = '';
+  let keywords = [];
   let nextLineIndex = lineIndex;
   while (lines[nextLineIndex] !== RANGED_WEAPON_IDENTIFIER) {
-    keywords = keywords.concat(lines[nextLineIndex]);
+    // strip off the KEYWORDS: string
+    keywords = keywords.concat(
+      lines[nextLineIndex]
+        .replace('KEYWORDS: ', '')
+        .split(/, ?/)
+        .filter((value) => value.length > 0)
+    );
     nextLineIndex++;
   }
   return {
@@ -123,6 +129,10 @@ export function getStats(lines: string[]) {
   return { unitStats };
 }
 
+export function getInvulnerableSave(lines: string[]) {
+  return { invulnerableSave: '' };
+}
+
 export function getSortedUnitsData(): Faction[] {
   const factionDirectories = fs.readdirSync(unitsDirectory);
 
@@ -165,7 +175,7 @@ export function getSortedUnitsData(): Faction[] {
         points: pointsData.filter((data) => data.id === unitId),
         unitStats,
         weapons,
-        keywords: [],
+        keywords,
       };
     });
     return { id: factionId, units: allUnitsData };

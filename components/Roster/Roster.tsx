@@ -12,6 +12,7 @@ import { RosterUnit } from '../../models/Unit';
 import React from 'react';
 import { RosterDataContext } from '../RosterDataProvider/RosterDataContext';
 import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
+import _ from 'lodash';
 
 export function RosterTable() {
   const { rosterUnits } = React.useContext(RosterDataContext);
@@ -25,18 +26,24 @@ export function RosterTable() {
     return <Typography variant='body1'>Your roster is empty!</Typography>;
   }
 
+  const uniqueListItems = _.groupBy(
+    rosterUnits,
+    (unit) =>
+      `${unit.points.id},${unit.points.modelCount},${unit.points.points}`
+  );
+
   return (
     <Table>
       <TableBody>
-        {rosterUnits.map((rosterUnit: RosterUnit) => (
+        {Object.keys(uniqueListItems).map((key) => (
           <TableRow
-            onClick={handleRowClick(rosterUnit.unit.id)}
+            onClick={handleRowClick(uniqueListItems[key][0].unit.id)}
             sx={{ cursor: 'pointer' }}
-            key={rosterUnit.unit.id}
+            key={key}
           >
-            <TableCell>{rosterUnit.unit.name}</TableCell>
+            <TableCell>{uniqueListItems[key][0].unit.name}</TableCell>
             <TableCell>
-              {rosterUnit.count} x {rosterUnit.unit.points[0].points}
+              {`${uniqueListItems[key].length} x ${uniqueListItems[key][0].points.points}`}
             </TableCell>
           </TableRow>
         ))}
@@ -58,11 +65,17 @@ export function RosterMenu({ onClick }) {
     return <MenuItem>Your roster is empty!</MenuItem>;
   }
 
+  const uniqueListItems = _.groupBy(
+    rosterUnits,
+    (unit) =>
+      `${unit.points.id},${unit.points.modelCount},${unit.points.points}`
+  );
+
   return (
     <>
-      {rosterUnits.map((rosterUnit: RosterUnit) => (
-        <MenuItem onClick={handleClick(rosterUnit.unit.id)}>
-          <Typography>{`${rosterUnit.unit.name} x ${rosterUnit.count}`}</Typography>
+      {Object.keys(uniqueListItems).map((key) => (
+        <MenuItem onClick={handleClick(uniqueListItems[key][0].unit.id)}>
+          <Typography>{`${uniqueListItems[key][0].unit.name} - ${uniqueListItems[key].length}`}</Typography>
         </MenuItem>
       ))}
     </>

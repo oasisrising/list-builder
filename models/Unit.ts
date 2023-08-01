@@ -32,7 +32,7 @@ export interface UnitPointsData {
 
 export interface RosterUnit {
   unit: Unit;
-  count: number;
+  points: UnitPointsData;
 }
 
 export enum StatType {

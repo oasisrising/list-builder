@@ -1,14 +1,14 @@
 'use client';
 
 import { createContext } from 'react';
-import { RosterUnit, Unit } from '../../models/Unit';
+import { RosterUnit, Unit, UnitPointsData } from '../../models/Unit';
 import React from 'react';
 import _ from 'lodash';
 
 interface RosterDataContextProps {
   rosterUnits: RosterUnit[];
-  addUnit: (unit: Unit) => void;
-  removeUnit: (unit: Unit) => void;
+  addUnit: (unit: Unit, points: UnitPointsData) => void;
+  removeUnit: (unitPointsData: UnitPointsData) => void;
   unitCount: number;
 }
 
@@ -35,35 +35,27 @@ export default function RosterDataProvider({ children }) {
     }
   }, [rosterUnits, unitCount]);
 
-  const handleAddUnit = (unit: Unit) => {
-    const index = _.findIndex(
-      rosterUnits,
-      (rosterUnit) => rosterUnit.unit.id === unit.id
-    );
+  const handleAddUnit = (unit: Unit, points: UnitPointsData) => {
+    setRosterUnits(rosterUnits.concat([{ unit: unit, points: points }]));
 
-    // if unit is in the roster already
-    if (index >= 0) {
-      rosterUnits[index].count += 1;
-      setRosterUnits(rosterUnits);
-    } else {
-      setRosterUnits(rosterUnits.concat([{ unit: unit, count: 1 }]));
-    }
     setUnitCount(unitCount + 1);
   };
 
-  const handleRemoveUnit = (unit: Unit) => {
-    const index = _.findIndex(
+  const handleRemoveUnit = (unitPointsData: UnitPointsData) => {
+    const indexToRemove = _.findIndex(
       rosterUnits,
-      (rosterUnit) => rosterUnit.unit.id === unit.id
+      (rosterUnit) =>
+        rosterUnit.unit.id === unitPointsData.id &&
+        rosterUnit.points.modelCount === unitPointsData.modelCount
     );
 
     // if the unit isn't in the roster, do nothing
-    if (index === -1) {
+    if (indexToRemove === -1) {
       return;
     }
-
-    rosterUnits[index].count -= 1;
-    setRosterUnits(_.filter(rosterUnits, (rosterUnit) => rosterUnit.count > 0));
+    setRosterUnits(
+      _.reject(rosterUnits, (unit, index) => index === indexToRemove)
+    );
     setUnitCount(unitCount - 1);
   };
 
