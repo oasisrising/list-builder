@@ -1,0 +1,3 @@
+RAPID FIRE
+[RAPID FIRE X]: Increase the Attacks by ‘x’ when
+targeting units within half range.

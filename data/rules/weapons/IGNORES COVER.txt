@@ -1,0 +1,2 @@
+IGNORES COVER
+The target cannot have the Benefit of Cover against this attack (pg 44).

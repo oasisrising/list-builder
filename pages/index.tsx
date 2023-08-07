@@ -14,17 +14,20 @@ import { UnitCardList } from '../components/UnitCardList/UnitCardList';
 import { RosterMenu, RosterTable } from '../components/Roster/Roster';
 import RosterDataProvider from '../components/RosterDataProvider/RosterDataContext';
 import { RosterTotalDisplay } from '../components/RosterTotalDisplay/RosterTotalDisplay';
+import { getWeaponAbilitiesData } from '../lib/weapons';
+import WeaponsDataProvider from '../components/WeaponDataProvider/WeaponDataContext';
 
 export async function getStaticProps() {
   const allFactionsData = getSortedUnitsData();
   return {
     props: {
       allUnitsData: allFactionsData[0].units,
+      allWeaopnsAbilities: getWeaponAbilitiesData(),
     },
   };
 }
 
-export default function Home({ allUnitsData }) {
+export default function Home({ allUnitsData, allWeaopnsAbilities }) {
   return (
     <Layout home>
       <Head>
@@ -33,55 +36,57 @@ export default function Home({ allUnitsData }) {
       <CustomTheme>
         <UnitDataProvider allUnitsData={allUnitsData}>
           <RosterDataProvider>
-            <Box sx={{ maxHeight: '100%', overflow: 'auto' }}>
-              <AppBar>
-                <Toolbar
-                  sx={{
-                    backgroundImage: `url(${image.src})`,
-                    backgroundSize: 'cover',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <ToolbarMenuButton
-                    MenuItems={FactionIndexMenu}
-                    title='Grey Knights index'
-                  />
-                  <RosterTotalDisplay />
-                  <ToolbarMenuButton
-                    MenuItems={RosterMenu}
-                    title='Your roster'
-                  />
-                </Toolbar>
-              </AppBar>
-              <Box display='flex' flexDirection='column' height='100vh'>
-                <Toolbar />
-                <Box
-                  flexGrow={1}
-                  display='flex'
-                  overflow='hidden'
-                  justifyContent='space-between'
-                >
-                  <Box
-                    overflow='auto'
-                    sx={{ display: { mobile: 'none', laptop: 'block' } }}
-                    minWidth='250px'
+            <WeaponsDataProvider allWeaponsData={allWeaopnsAbilities}>
+              <Box sx={{ maxHeight: '100%', overflow: 'auto' }}>
+                <AppBar>
+                  <Toolbar
+                    sx={{
+                      backgroundImage: `url(${image.src})`,
+                      backgroundSize: 'cover',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                    }}
                   >
-                    <FactionIndexTable />
-                  </Box>
-                  <Box overflow='auto' width='100%'>
-                    <UnitCardList />
-                  </Box>
+                    <ToolbarMenuButton
+                      MenuItems={FactionIndexMenu}
+                      title='Grey Knights index'
+                    />
+                    <RosterTotalDisplay />
+                    <ToolbarMenuButton
+                      MenuItems={RosterMenu}
+                      title='Your roster'
+                    />
+                  </Toolbar>
+                </AppBar>
+                <Box display='flex' flexDirection='column' height='100vh'>
+                  <Toolbar />
                   <Box
-                    overflow='auto'
-                    sx={{ display: { mobile: 'none', laptop: 'block' } }}
-                    minWidth='250px'
+                    flexGrow={1}
+                    display='flex'
+                    overflow='hidden'
+                    justifyContent='space-between'
                   >
-                    <RosterTable />
+                    <Box
+                      overflow='auto'
+                      sx={{ display: { mobile: 'none', laptop: 'block' } }}
+                      minWidth='250px'
+                    >
+                      <FactionIndexTable />
+                    </Box>
+                    <Box overflow='auto' width='100%'>
+                      <UnitCardList />
+                    </Box>
+                    <Box
+                      overflow='auto'
+                      sx={{ display: { mobile: 'none', laptop: 'block' } }}
+                      minWidth='250px'
+                    >
+                      <RosterTable />
+                    </Box>
                   </Box>
                 </Box>
               </Box>
-            </Box>
+            </WeaponsDataProvider>
           </RosterDataProvider>
         </UnitDataProvider>
       </CustomTheme>

@@ -1,0 +1,2 @@
+ASSAULT
+Can be shot even if the bearer’s unit Advanced.

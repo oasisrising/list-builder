@@ -1,0 +1,5 @@
+PRECISION
+When targeting an Attached unit, the attacking
+model’s player can have the attack allocated
+to a Character model in that unit visible to
+the bearer.

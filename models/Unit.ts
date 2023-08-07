@@ -20,8 +20,13 @@ export enum WeaponType {
 export interface WeaponStat {
   weaponType: WeaponType;
   name: string;
-  specialRules: string[];
+  specialRules: WeaponSpecialRules[];
   weaponStats: Stat[];
+}
+
+export interface WeaponSpecialRules {
+  name: string;
+  id: string;
 }
 
 export interface UnitPointsData {

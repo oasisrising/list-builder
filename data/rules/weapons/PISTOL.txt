@@ -1,0 +1,6 @@
+PISTOL
+Can be shot even if the bearer’s unit is within
+Engagement Range of enemy units, but must
+target one of those enemy units.
+Cannot be shot alongside any other non-Pistol
+weapon (except by a Monster or Vehicle).

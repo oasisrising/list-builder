@@ -1,0 +1,2 @@
+PSYCHIC
+Can become modified by rules targetting PSYCHIC weapons.

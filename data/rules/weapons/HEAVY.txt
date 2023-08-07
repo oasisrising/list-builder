@@ -1,0 +1,3 @@
+HEAVY
+Add 1 to Hit rolls if the bearer’s unit Remained
+Stationary this turn.

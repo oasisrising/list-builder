@@ -50,7 +50,7 @@ describe('unit parsing tests', () => {
       const lineIndex = 0;
       const expectedWeapon: WeaponStat = {
         name: 'Storm bolter',
-        specialRules: ['RAPID FIRE 2'],
+        specialRules: [{ name: 'RAPID FIRE 2', id: 'RAPID FIRE' }],
         weaponStats: [
           { type: StatType.RANGE, value: '24"' },
           { type: StatType.A, value: '2' },
@@ -76,7 +76,7 @@ describe('unit parsing tests', () => {
       const lineIndex = 0;
       const expectedWeapon: WeaponStat = {
         name: 'Hunter-killer missile',
-        specialRules: ['ONE SHOT'],
+        specialRules: [{ name: 'ONE SHOT', id: 'ONE SHOT' }],
         weaponStats: [
           { type: StatType.RANGE, value: '48"' },
           { type: StatType.A, value: '1' },
@@ -143,7 +143,11 @@ describe('unit parsing tests', () => {
       const lineIndex = 0;
       const expectedWeapon: WeaponStat = {
         name: 'Purifying Flame',
-        specialRules: ['ANTI-INFANTRY 2+', 'IGNORES COVER', 'PSYCHIC'],
+        specialRules: [
+          { name: 'ANTI-INFANTRY 2+', id: 'ANTI' },
+          { name: 'IGNORES COVER', id: 'IGNORES COVER' },
+          { name: 'PSYCHIC', id: 'PSYCHIC' },
+        ],
         weaponStats: [
           { type: StatType.RANGE, value: '24"' },
           { type: StatType.A, value: '2' },

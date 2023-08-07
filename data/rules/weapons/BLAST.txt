@@ -1,0 +1,3 @@
+BLAST
+Add 1 to the Attacks characteristic for every five models in the target unit (rounding down).
+Can never be used against a target that is within Engagement Range of any units from the attacking model’s army (including its own).

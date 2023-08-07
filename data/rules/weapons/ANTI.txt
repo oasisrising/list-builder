@@ -1,0 +1,4 @@
+ANTI
+[ANTI-KEYWORD X+]: An unmodified Wound roll of
+‘x+’ against a target with the matching keyword
+scores a Critical Wound.

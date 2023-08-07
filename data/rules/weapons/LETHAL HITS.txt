@@ -1,0 +1,3 @@
+LETHAL HITS
+A Critical Hit automatically
+wounds the target.

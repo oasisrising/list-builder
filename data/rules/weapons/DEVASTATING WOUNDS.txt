@@ -1,0 +1,4 @@
+DEVASTATING WOUNDS
+A Critical Wound inflicts mortal wounds equal to
+the weapon’s Damage characteristic, instead of
+any normal damage.

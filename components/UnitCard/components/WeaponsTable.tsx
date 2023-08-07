@@ -4,12 +4,15 @@ import Icon from '@mdi/react';
 import { Box, Typography, Grid, styled } from '@mui/material';
 import {
   StatType,
+  WeaponSpecialRules,
   WeaponStat,
   WeaponType,
   statDescriptions,
 } from '../../../models/Unit';
 import { DARK_GREY } from '../../../styles/CustomTheme';
 import { StyledTooltip as Tooltip } from '../../StyledTooltip';
+import React from 'react';
+import { WeaponDataContext } from '../../WeaponDataProvider/WeaponDataContext';
 
 export const WeaponTable: React.FC<{
   stats: StatType[];
@@ -133,15 +136,42 @@ const TableRowItem = styled(Grid)({
   alignItems: 'center',
 });
 
-const SpecialRulesDisplay: React.FC<{ specialRules: string[] }> = ({
+const SpecialRulesDisplay: React.FC<{ specialRules: WeaponSpecialRules[] }> = ({
   specialRules,
 }) => {
   if (specialRules.length === 0) {
     return null;
   }
   return (
-    <Typography variant='subtitle2'>{`[${specialRules.join(
-      ', '
-    )}]`}</Typography>
+    <Box display='flex'>
+      <Typography variant='subtitle2'>{`[`}</Typography>
+      {specialRules.map((specialRule, index) => (
+        <>
+          <SpecialRuleTooltip rule={specialRule} />
+          {index < specialRules.length - 1 && (
+            <Typography variant='subtitle2'>,&nbsp;</Typography>
+          )}
+        </>
+      ))}
+      <Typography variant='subtitle2'>{`]`}</Typography>
+    </Box>
+  );
+};
+
+const SpecialRuleTooltip: React.FC<{ rule: WeaponSpecialRules }> = ({
+  rule,
+}) => {
+  const [title, setTitle] = React.useState('');
+  const { allWeaponsData } = React.useContext(WeaponDataContext);
+
+  const handleOpen = () => {
+    const description = allWeaponsData[rule.id];
+    setTitle(description);
+  };
+
+  return (
+    <Tooltip title={title ?? rule.name} onOpen={handleOpen}>
+      <Typography variant='subtitle2'>{rule.name}</Typography>
+    </Tooltip>
   );
 };

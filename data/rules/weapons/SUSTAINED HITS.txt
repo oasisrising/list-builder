@@ -1,0 +1,3 @@
+SUSTAINED HITS
+[SUSTAINED HITS X]: Each Critical Hit scores ‘x’
+additional hits on the target.

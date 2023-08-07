@@ -1,0 +1,4 @@
+EXTRA ATTACKS
+The bearer can attack with this weapon in
+addition to any other weapons it can make
+attacks with.

@@ -1,0 +1,10 @@
+INDIRECT FIRE
+Can target and make attacks against units that
+are not visible to the attacking unit.
+
+If no models are visible in a target unit when
+it is selected, then when making an attack
+against that target with an Indirect Fire
+weapon, subtract 1 from that attack’s Hit roll
+and the target has the Benefit of Cover against
+that attack.

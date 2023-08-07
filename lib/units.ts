@@ -49,6 +49,23 @@ export function getKeywords(lines: string[], lineIndex: number) {
   };
 }
 
+export function getWeaponSpecialRules(line: string) {
+  return line
+    .replace('[', '')
+    .replace(']', '')
+    .split(', ')
+    .map((rule) => {
+      let id = rule;
+      if (id.startsWith('ANTI')) {
+        id = 'ANTI';
+      }
+      return {
+        id: id.replace(/ \d/, ''),
+        name: rule,
+      };
+    });
+}
+
 export function getWeapons(lines: string[], lineIndex: number) {
   let nextLineIndex = lineIndex;
   let weapons: WeaponStat[] = [];
@@ -66,10 +83,7 @@ export function getWeapons(lines: string[], lineIndex: number) {
       if (lines[nextLineIndex + 1][0] === '[') {
         name = lines[nextLineIndex];
         nextLineIndex++;
-        specialRules = lines[nextLineIndex]
-          .replace('[', '')
-          .replace(']', '')
-          .split(', ');
+        specialRules = getWeaponSpecialRules(lines[nextLineIndex]);
         nextLineIndex++;
         stats = lines[nextLineIndex].split(' ');
       } else {
@@ -85,8 +99,11 @@ export function getWeapons(lines: string[], lineIndex: number) {
 
         weaponLineParts = weaponNameAndSpecialRules.split(/[\[\]]/);
 
-        (specialRules = weaponLineParts.length > 1 ? [weaponLineParts[1]] : []),
-          (name = weaponLineParts[0].trim());
+        specialRules =
+          weaponLineParts.length > 1
+            ? getWeaponSpecialRules(weaponLineParts[1])
+            : [];
+        name = weaponLineParts[0].trim();
       }
 
       const isMelee = stats[0] === 'Melee';

@@ -1,0 +1,7 @@
+HAZARDOUS
+After a unit shoots or fights, roll one Hazardous
+test (one D6) for each Hazardous weapon
+used. For each 1, one model equipped with a
+Hazardous weapon is destroyed (Characters,
+Monsters and Vehicles suffer 3 mortal
+wounds instead).
