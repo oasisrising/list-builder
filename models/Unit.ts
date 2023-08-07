@@ -54,6 +54,7 @@ export enum StatType {
   S = 'S',
   AP = 'AP',
   D = 'D',
+  INV = 'INV',
 }
 
 export const statDescriptions: Record<StatType, string> = {
@@ -70,6 +71,7 @@ export const statDescriptions: Record<StatType, string> = {
   [StatType.S]: 'Strength',
   [StatType.AP]: 'Armour Piercing',
   [StatType.D]: 'Damage',
+  [StatType.INV]: 'Invulnerable Save',
 };
 
 export const RangedStats = [

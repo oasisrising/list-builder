@@ -9,7 +9,7 @@ export const UnitStatDisplay: React.FC<Stat> = ({ type, value }) => {
     <Tooltip title={statDescriptions[type]}>
       <Box
         sx={{
-          width: '42px',
+          minWidth: '42px',
           height: '42px',
           textAlign: 'center',
           padding: '4px',

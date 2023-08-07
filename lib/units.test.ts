@@ -1,6 +1,7 @@
 import { StatType, WeaponStat, WeaponType } from '../models/Unit';
 import {
   FACTION_IDENTIFIER,
+  INVULNERABLE_SAVE_INDENTIFIER,
   RANGED_WEAPON_IDENTIFIER,
   STAT_LINE_IDENTIFIER,
   getInvulnerableSave,
@@ -171,6 +172,7 @@ describe('unit parsing tests', () => {
         'another line',
         STAT_LINE_IDENTIFIER,
         '6" 4 2+ 5 6+ 1',
+        `${INVULNERABLE_SAVE_INDENTIFIER} 4+`,
       ];
       const expectedStats = [
         { type: StatType.M, value: '6"' },
@@ -179,6 +181,7 @@ describe('unit parsing tests', () => {
         { type: StatType.W, value: '5' },
         { type: StatType.LD, value: '6+' },
         { type: StatType.OC, value: '1' },
+        { type: StatType.INV, value: '4+' },
       ];
       const result = getStats(lines);
 

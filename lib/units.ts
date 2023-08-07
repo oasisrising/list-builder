@@ -22,6 +22,7 @@ export const MELEE_WEAPON_IDENTIFIER = 'MELEE WEAPONS RANGE A WS S AP D';
 export const FACTION_IDENTIFIER = 'FACTION KEYWORDS:';
 export const STAT_LINE_IDENTIFIER = 'M T SV W LD OC';
 export const PARTIAL_STAT_LINE_INDENTIFIER = 'T SV W LD OC';
+export const INVULNERABLE_SAVE_INDENTIFIER = 'INVULNERABLE SAVE';
 
 export function getName(lines: string[], lineIndex: number) {
   return {
@@ -143,11 +144,27 @@ export function getStats(lines: string[]) {
       value,
     };
   });
+
+  const { invulnerableSave } = getInvulnerableSave(lines);
+  if (invulnerableSave) {
+    unitStats.push({ type: StatType.INV, value: invulnerableSave });
+  }
   return { unitStats };
 }
 
 export function getInvulnerableSave(lines: string[]) {
-  return { invulnerableSave: '' };
+  const index = lines.findIndex((line) =>
+    line.startsWith(INVULNERABLE_SAVE_INDENTIFIER)
+  );
+  if (index < 0) {
+    return { invulnerableSave: '' };
+  }
+  return {
+    invulnerableSave: lines[index].replace(
+      `${INVULNERABLE_SAVE_INDENTIFIER} `,
+      ''
+    ),
+  };
 }
 
 export function getSortedUnitsData(): Faction[] {
