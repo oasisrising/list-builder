@@ -5,6 +5,15 @@ export interface Unit {
   points: UnitPointsData[];
   weapons: WeaponStat[];
   keywords: string[];
+  unitComposition: string[];
+  wargearOptions: string[];
+  leadership: string[];
+  abilities: Ability[];
+}
+
+export interface Ability {
+  name: string;
+  description: string;
 }
 
 export interface Stat {

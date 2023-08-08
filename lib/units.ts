@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import {
+  Ability,
   MeleeStats,
   RangedStats,
   Stat,
@@ -11,7 +12,7 @@ import {
   WeaponType,
 } from '../models/Unit';
 import { Faction } from '../models/Faction';
-import _ from 'lodash';
+import _, { last } from 'lodash';
 
 const unitsDirectory = path.join(process.cwd(), 'data/units');
 const UnitStatTypes = ['M', 'T', 'SV', 'W', 'LD', 'OC'];
@@ -21,8 +22,12 @@ export const RANGED_WEAPON_IDENTIFIER = 'RANGED WEAPONS RANGE A BS S AP D';
 export const MELEE_WEAPON_IDENTIFIER = 'MELEE WEAPONS RANGE A WS S AP D';
 export const FACTION_IDENTIFIER = 'FACTION KEYWORDS:';
 export const STAT_LINE_IDENTIFIER = 'M T SV W LD OC';
-export const PARTIAL_STAT_LINE_INDENTIFIER = 'T SV W LD OC';
-export const INVULNERABLE_SAVE_INDENTIFIER = 'INVULNERABLE SAVE';
+export const PARTIAL_STAT_LINE_IDENTIFIER = 'T SV W LD OC';
+export const INVULNERABLE_SAVE_IDENTIFIER = 'INVULNERABLE SAVE';
+export const WARGEAR_OPTIONS_IDENTIFIER = 'WARGEAR OPTIONS';
+export const UNIT_COMPOSITION_IDENTIFIER = 'UNIT COMPOSITION';
+export const LEADER_IDENTIFIER = 'LEADER';
+export const ABILITIES_IDENTINTIFIER = 'ABILITIES';
 
 export function getName(lines: string[], lineIndex: number) {
   return {
@@ -133,7 +138,7 @@ export function getStats(lines: string[]) {
   let unitStats: Stat[] = [];
   let nextLineIndex = lines.findIndex(
     (line) =>
-      line === STAT_LINE_IDENTIFIER || line === PARTIAL_STAT_LINE_INDENTIFIER
+      line === STAT_LINE_IDENTIFIER || line === PARTIAL_STAT_LINE_IDENTIFIER
   );
   if (nextLineIndex >= 0) {
     nextLineIndex++;
@@ -154,16 +159,108 @@ export function getStats(lines: string[]) {
 
 export function getInvulnerableSave(lines: string[]) {
   const index = lines.findIndex((line) =>
-    line.startsWith(INVULNERABLE_SAVE_INDENTIFIER)
+    line.startsWith(INVULNERABLE_SAVE_IDENTIFIER)
   );
   if (index < 0) {
     return { invulnerableSave: '' };
   }
   return {
     invulnerableSave: lines[index].replace(
-      `${INVULNERABLE_SAVE_INDENTIFIER} `,
+      `${INVULNERABLE_SAVE_IDENTIFIER} `,
       ''
     ),
+  };
+}
+
+export function getWargearOptions(lines: string[]) {
+  let nextLineIndex = lines.findIndex(
+    (line) => line === WARGEAR_OPTIONS_IDENTIFIER
+  );
+  if (nextLineIndex < 0) {
+    return {
+      wargearOptions: [],
+    };
+  }
+  let lastLine = lines.findIndex(
+    (line) => line === UNIT_COMPOSITION_IDENTIFIER
+  );
+
+  return {
+    wargearOptions: lines.slice(nextLineIndex + 1, lastLine),
+  };
+}
+
+export function getUnitComposition(lines: string[], name: string) {
+  const nextLineIndex = lines.findIndex(
+    (line) => line === UNIT_COMPOSITION_IDENTIFIER
+  );
+  if (nextLineIndex < 0) {
+    return {
+      wargearOptions: [],
+    };
+  }
+  const lastLine = lines.findIndex(
+    (line, index) =>
+      index !== 0 && (line === name || line === LEADER_IDENTIFIER)
+  );
+  return {
+    unitComposition: lines.slice(nextLineIndex + 1, lastLine),
+  };
+}
+
+export function getLeadership(lines: string[], name: string) {
+  let nextLineIndex = lines.findIndex((line) => line === LEADER_IDENTIFIER);
+  if (nextLineIndex < 0) {
+    return {
+      leadership: [],
+    };
+  }
+  let lastLine = lines.findIndex((line, index) => index !== 0 && line === name);
+
+  return {
+    leadership: lines.slice(nextLineIndex + 1, lastLine),
+  };
+}
+
+export function getAbilities(lines: string[]) {
+  let nextLineIndex = lines.findIndex(
+    (line) => line === ABILITIES_IDENTINTIFIER
+  );
+  if (nextLineIndex < 0) {
+    return {
+      abilities: [],
+    };
+  }
+  let lastLine = lines.findIndex(
+    (line) =>
+      line.startsWith(INVULNERABLE_SAVE_IDENTIFIER) ||
+      line === STAT_LINE_IDENTIFIER ||
+      line === PARTIAL_STAT_LINE_IDENTIFIER
+  );
+
+  const abilityLines = lines.slice(nextLineIndex + 1, lastLine);
+  nextLineIndex = 0;
+  let name = '';
+  let description = '';
+  const abilities: Ability[] = [];
+  while (nextLineIndex < abilityLines.length) {
+    if (abilityLines[nextLineIndex].includes(': ')) {
+      const nameLine = abilityLines[nextLineIndex].split(': ');
+      console.log('name line');
+      if (name.length > 0) {
+        console.log(`Adding ability ${name} ${description}`);
+        abilities.push({ name, description });
+      }
+      name = nameLine[0];
+      description = nameLine[1];
+    } else {
+      description = description.concat(' ').concat(abilityLines[nextLineIndex]);
+    }
+    nextLineIndex++;
+  }
+  abilities.push({ name, description });
+  return {
+    abilities,
   };
 }
 
@@ -202,7 +299,10 @@ export function getSortedUnitsData(): Faction[] {
 
       // advance to unit stats
       const { unitStats } = getStats(lines);
-
+      const { wargearOptions } = getWargearOptions(lines);
+      const { unitComposition } = getUnitComposition(lines, name);
+      const { leadership } = getLeadership(lines, name);
+      const { abilities } = getAbilities(lines);
       return {
         id: unitId,
         name,
@@ -210,6 +310,10 @@ export function getSortedUnitsData(): Faction[] {
         unitStats,
         weapons,
         keywords,
+        wargearOptions,
+        unitComposition,
+        leadership,
+        abilities,
       };
     });
     return { id: factionId, units: allUnitsData };

@@ -1,13 +1,17 @@
 import { StatType, WeaponStat, WeaponType } from '../models/Unit';
 import {
   FACTION_IDENTIFIER,
-  INVULNERABLE_SAVE_INDENTIFIER,
+  INVULNERABLE_SAVE_IDENTIFIER,
   RANGED_WEAPON_IDENTIFIER,
   STAT_LINE_IDENTIFIER,
+  getAbilities,
   getInvulnerableSave,
   getKeywords,
+  getLeadership,
   getName,
   getStats,
+  getUnitComposition,
+  getWargearOptions,
   getWeapons,
 } from './units';
 
@@ -172,7 +176,7 @@ describe('unit parsing tests', () => {
         'another line',
         STAT_LINE_IDENTIFIER,
         '6" 4 2+ 5 6+ 1',
-        `${INVULNERABLE_SAVE_INDENTIFIER} 4+`,
+        `${INVULNERABLE_SAVE_IDENTIFIER} 4+`,
       ];
       const expectedStats = [
         { type: StatType.M, value: '6"' },
@@ -209,7 +213,6 @@ describe('unit parsing tests', () => {
       expect(result.unitStats).toEqual(expectedStats);
     });
   });
-
   describe('getInvlunerableSave', () => {
     it('should parse invulnerable save', () => {
       const lines = [
@@ -224,6 +227,117 @@ describe('unit parsing tests', () => {
       const result = getInvulnerableSave(lines);
 
       expect(result.invulnerableSave).toEqual('4+');
+    });
+  });
+  describe('getWargearOptions', () => {
+    it('parses wargear options', () => {
+      const lines = [
+        'some line',
+        'WARGEAR OPTIONS',
+        '■ For every 5 models in this unit, up to 2 Paladins can each have their storm bolter replaced with one of',
+        'the following:',
+        '◦ 1 incinerator',
+        '◦ 1 psilencer',
+        '◦ 1 psycannon',
+        '■ 1 Paladin equipped with a storm bolter and Nemesis force weapon can be equipped with 1 Ancient’s',
+        'banner. That model’s storm bolter can be replaced with one of the following:',
+        '◦ 1 incinerator',
+        '◦ 1 psilencer',
+        '◦ 1 psycannon',
+        'UNIT COMPOSITION',
+      ];
+
+      const result = getWargearOptions(lines);
+      expect(result.wargearOptions).toStrictEqual([
+        '■ For every 5 models in this unit, up to 2 Paladins can each have their storm bolter replaced with one of',
+        'the following:',
+        '◦ 1 incinerator',
+        '◦ 1 psilencer',
+        '◦ 1 psycannon',
+        '■ 1 Paladin equipped with a storm bolter and Nemesis force weapon can be equipped with 1 Ancient’s',
+        'banner. That model’s storm bolter can be replaced with one of the following:',
+        '◦ 1 incinerator',
+        '◦ 1 psilencer',
+        '◦ 1 psycannon',
+      ]);
+    });
+  });
+  describe('getUnitComposition', () => {
+    it('parses unit composition', () => {
+      const lines = [
+        'some line',
+        'UNIT COMPOSITION',
+        '■ 1 Paragon',
+        '■ 4-9 Paladins',
+        'Every model is equipped with: storm bolter;',
+        'Nemesis force weapon.',
+        'LEADER',
+      ];
+
+      const result = getUnitComposition(lines, 'PALADIN SQUAD');
+      expect(result.unitComposition).toStrictEqual([
+        '■ 1 Paragon',
+        '■ 4-9 Paladins',
+        'Every model is equipped with: storm bolter;',
+        'Nemesis force weapon.',
+      ]);
+    });
+  });
+  describe('getLeadership', () => {
+    it('parses leadership info', () => {
+      const lines = [
+        'some line',
+        'Nemesis force sword.',
+        'LEADER',
+        'This model can be attached to the following units:',
+        '■ Brotherhood Terminator Squad',
+        '■ Paladin Squad',
+        'BROTHER-CAPTAIN STERN',
+      ];
+
+      const result = getLeadership(lines, 'BROTHER-CAPTAIN STERN');
+      expect(result.leadership).toStrictEqual([
+        'This model can be attached to the following units:',
+        '■ Brotherhood Terminator Squad',
+        '■ Paladin Squad',
+      ]);
+    });
+  });
+  describe('getAbilities', () => {
+    it('parses abilities', () => {
+      const lines = [
+        'Grey Knights',
+        'ABILITIES',
+        'CORE: Deep Strike, Leader',
+        'FACTION: Teleport Assault',
+        'Exemplar of the Silvered Host: While this model is leading a',
+        'unit, each time a model in that unit makes a melee attack, on',
+        'a Critical Wound, the target suffers 1 mortal wound in addition',
+        'to any normal damage.',
+        'Strands of Fate (Psychic): The first time this model is',
+        'destroyed, roll one D6 at the end of the phase. On a 2+, set',
+        'this model back up on the battlefield as close as possible to',
+        'where it was destroyed and not within Engagement Range of',
+        'any enemy units, with its full wounds remaining.',
+        'INVULNERABLE SAVE 4+',
+        'M T SV W LD OC',
+      ];
+
+      const result = getAbilities(lines);
+      expect(result.abilities).toStrictEqual([
+        { name: 'CORE', description: 'Deep Strike, Leader' },
+        { name: 'FACTION', description: 'Teleport Assault' },
+        {
+          name: 'Exemplar of the Silvered Host',
+          description:
+            'While this model is leading a unit, each time a model in that unit makes a melee attack, on a Critical Wound, the target suffers 1 mortal wound in addition to any normal damage.',
+        },
+        {
+          name: 'Strands of Fate (Psychic)',
+          description:
+            'The first time this model is destroyed, roll one D6 at the end of the phase. On a 2+, set this model back up on the battlefield as close as possible to where it was destroyed and not within Engagement Range of any enemy units, with its full wounds remaining.',
+        },
+      ]);
     });
   });
 });
