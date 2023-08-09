@@ -9,6 +9,7 @@ export interface Unit {
   wargearOptions: string[];
   leadership: string[];
   abilities: Ability[];
+  wargearAbilities: Ability[];
 }
 
 export interface Ability {

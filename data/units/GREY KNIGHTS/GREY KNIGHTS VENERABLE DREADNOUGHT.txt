@@ -2,7 +2,7 @@ GREY KNIGHTS VENERABLE DREADNOUGHT
 KEYWORDS: Vehicle, Walker, Psyker, Smoke, Imperium,
 Venerable Dreadnought
 RANGED WEAPONS RANGE A BS S AP D
-Assault cannon [DEVASTATIG WOUNDS] 24" 6 3+ 6 0 1
+Assault cannon [DEVASTATING WOUNDS] 24" 6 3+ 6 0 1
 Heavy flamer [TORRENT, IGNORES COVER] 12" D6 N/A 5 -1 1
 Heavy plasma cannon – standard
 [BLAST]

@@ -28,6 +28,7 @@ export const WARGEAR_OPTIONS_IDENTIFIER = 'WARGEAR OPTIONS';
 export const UNIT_COMPOSITION_IDENTIFIER = 'UNIT COMPOSITION';
 export const LEADER_IDENTIFIER = 'LEADER';
 export const ABILITIES_IDENTINTIFIER = 'ABILITIES';
+export const WARGEAR_ABILITIES_IDENTIFIER = 'WARGEAR ABILITIES';
 
 export function getName(lines: string[], lineIndex: number) {
   return {
@@ -235,34 +236,61 @@ export function getAbilities(lines: string[]) {
     (line) =>
       line.startsWith(INVULNERABLE_SAVE_IDENTIFIER) ||
       line === STAT_LINE_IDENTIFIER ||
+      line === PARTIAL_STAT_LINE_IDENTIFIER ||
+      line === WARGEAR_ABILITIES_IDENTIFIER
+  );
+
+  const abilityLines = lines.slice(nextLineIndex + 1, lastLine);
+
+  return {
+    abilities: parseAbilities(abilityLines),
+  };
+}
+
+export function getWargearAbilities(lines: string[]) {
+  let nextLineIndex = lines.findIndex(
+    (line) => line === WARGEAR_ABILITIES_IDENTIFIER
+  );
+  if (nextLineIndex < 0) {
+    return {
+      wargearAbilities: [],
+    };
+  }
+  let lastLine = lines.findIndex(
+    (line) =>
+      line.startsWith(INVULNERABLE_SAVE_IDENTIFIER) ||
+      line === STAT_LINE_IDENTIFIER ||
       line === PARTIAL_STAT_LINE_IDENTIFIER
   );
 
   const abilityLines = lines.slice(nextLineIndex + 1, lastLine);
-  nextLineIndex = 0;
+
+  return {
+    wargearAbilities: parseAbilities(abilityLines),
+  };
+}
+
+export const parseAbilities = (lines: string[]) => {
+  let nextLineIndex = 0;
   let name = '';
   let description = '';
   const abilities: Ability[] = [];
-  while (nextLineIndex < abilityLines.length) {
-    if (abilityLines[nextLineIndex].includes(': ')) {
-      const nameLine = abilityLines[nextLineIndex].split(': ');
-      console.log('name line');
+  while (nextLineIndex < lines.length) {
+    if (lines[nextLineIndex].includes(': ')) {
+      const nameLine = lines[nextLineIndex].split(': ');
       if (name.length > 0) {
-        console.log(`Adding ability ${name} ${description}`);
         abilities.push({ name, description });
       }
       name = nameLine[0];
       description = nameLine[1];
     } else {
-      description = description.concat(' ').concat(abilityLines[nextLineIndex]);
+      description = description.concat(' ').concat(lines[nextLineIndex]);
     }
     nextLineIndex++;
   }
   abilities.push({ name, description });
-  return {
-    abilities,
-  };
-}
+  return abilities;
+};
 
 export function getSortedUnitsData(): Faction[] {
   const factionDirectories = fs.readdirSync(unitsDirectory);
@@ -303,6 +331,7 @@ export function getSortedUnitsData(): Faction[] {
       const { unitComposition } = getUnitComposition(lines, name);
       const { leadership } = getLeadership(lines, name);
       const { abilities } = getAbilities(lines);
+      const { wargearAbilities } = getWargearAbilities(lines);
       return {
         id: unitId,
         name,
@@ -314,6 +343,7 @@ export function getSortedUnitsData(): Faction[] {
         unitComposition,
         leadership,
         abilities,
+        wargearAbilities,
       };
     });
     return { id: factionId, units: allUnitsData };

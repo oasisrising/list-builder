@@ -8,7 +8,13 @@ import {
   useTheme,
 } from '@mui/material';
 import React, { useRef } from 'react';
-import { Unit, RangedStats, MeleeStats, WeaponType } from '../../models/Unit';
+import {
+  Unit,
+  RangedStats,
+  MeleeStats,
+  WeaponType,
+  Ability,
+} from '../../models/Unit';
 import { UnitStatDisplay } from './components/UnitStatDisplay';
 import { DARKER_GREY, DARK_GREY } from '../../styles/CustomTheme';
 import { WeaponTable } from './components/WeaponsTable';
@@ -72,11 +78,13 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
         />
         <Grid container sx={{ backgroundColor: DARKER_GREY }}>
           <Grid item mobile={12} tablet={6}>
-            <SpecialRulesDisplay
+            <SpecialAbilitiesDisplay
               title='Abilities'
-              rules={unit.abilities.map(
-                (ability) => `${ability.name}: ${ability.description}`
-              )}
+              abilities={unit.abilities}
+            />
+            <SpecialAbilitiesDisplay
+              title='Wargear Abilities'
+              abilities={unit.wargearAbilities}
             />
           </Grid>
           <Grid item mobile={12} tablet={6}>
@@ -125,6 +133,43 @@ const SpecialRulesDisplay: React.FC<{ title: string; rules: string[] }> = ({
           <Typography variant='body2' sx={{ paddingLeft: '4px' }}>
             {line}
           </Typography>
+        ))}
+      </Paper>
+    </Grid>
+  );
+};
+
+const SpecialAbilitiesDisplay: React.FC<{
+  title: string;
+  abilities: Ability[];
+}> = ({ title, abilities }) => {
+  const theme = useTheme();
+
+  if (abilities.length === 0) {
+    return null;
+  }
+  return (
+    <Grid item mobile={12}>
+      <Paper
+        sx={{
+          margin: '8px',
+          overflow: 'auto',
+        }}
+      >
+        <Typography
+          variant='h3'
+          sx={{ backgroundColor: DARK_GREY, paddingLeft: '4px' }}
+        >
+          {title}
+        </Typography>
+        {abilities.map((ability) => (
+          <>
+            <Typography variant='body2' sx={{ paddingLeft: '4px' }}>
+              <b>{ability.name}</b>
+              {`: `}
+              {ability.description}
+            </Typography>
+          </>
         ))}
       </Paper>
     </Grid>

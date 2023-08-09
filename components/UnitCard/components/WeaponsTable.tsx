@@ -24,24 +24,21 @@ export const WeaponTable: React.FC<{
       <Grid container>
         <HeaderRowItem
           item
-          sx={{
-            padding: '4px 0 0 4px',
-            display: { mobile: 'none', desktop: 'block' },
-          }}
-          mobile={1}
-        >
-          <Icon
-            color='white'
-            path={type === WeaponType.Ranged ? mdiCrosshairs : mdiSwordCross}
-            size='24px'
-          />
-        </HeaderRowItem>
-        <HeaderRowItem
-          item
           mobile={5}
-          desktop={4}
           sx={{ justifyContent: 'start', paddingLeft: '4px' }}
         >
+          <Box
+            sx={{
+              padding: '0 4px',
+              display: { mobile: 'none', desktop: 'block' },
+            }}
+          >
+            <Icon
+              color='white'
+              path={type === WeaponType.Ranged ? mdiCrosshairs : mdiSwordCross}
+              size='24px'
+            />
+          </Box>
           <Typography variant='h3'>{type}</Typography>
         </HeaderRowItem>
         {stats.map((stat, index) => (
@@ -70,16 +67,7 @@ export const WeaponTable: React.FC<{
             >
               <Grid
                 item
-                sx={{
-                  display: { mobile: 'none', desktop: 'block' },
-                }}
-                mobile={1}
-                key={weapon.name}
-              />
-              <Grid
-                item
                 mobile={5}
-                desktop={4}
                 sx={{
                   justifyContent: 'start',
                   paddingLeft: '4px',
@@ -100,15 +88,7 @@ export const WeaponTable: React.FC<{
               ))}
               <Grid
                 item
-                mobile={1}
-                sx={{
-                  display: { mobile: 'none', desktop: 'block' },
-                }}
-              />
-              <Grid
-                item
                 mobile={12}
-                desktop={11}
                 sx={{
                   justifyContent: 'start',
                   paddingLeft: '4px',
