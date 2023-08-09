@@ -307,7 +307,8 @@ export function getSortedUnitsData(): Faction[] {
 
   // Top level should be faction directories
   const allFactionsData = factionDirectories.map((directory): Faction => {
-    const factionId = directory.replace(/\.txt$/, '').toLowerCase();
+    const factionName = directory.replace(/\.txt$/, '').toLowerCase();
+    const factionId = factionName.replaceAll(' ', '-');
     const fileNames = fs.readdirSync(`${unitsDirectory}/${directory}`);
     const allUnitsData = fileNames.map((fileName): Unit => {
       // Remove ".txt" from file name to get id
@@ -358,7 +359,7 @@ export function getSortedUnitsData(): Faction[] {
         console.error(`Error parsing ${fileName}: ${lineIndex} ${error}`);
       }
     });
-    return { id: factionId, units: allUnitsData };
+    return { id: factionId, name: factionName, units: allUnitsData };
   });
   return allFactionsData;
 }

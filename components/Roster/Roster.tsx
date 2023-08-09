@@ -10,8 +10,8 @@ import {
 } from '@mui/material';
 import { RosterUnit } from '../../models/Unit';
 import React from 'react';
-import { RosterDataContext } from '../RosterDataProvider/RosterDataContext';
-import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
+import { RosterDataContext } from '../../providers/RosterDataProvider/RosterDataContext';
+import { UnitDataContext } from '../../providers/UnitDataProvider/UnitDataContext';
 import _ from 'lodash';
 
 export function RosterTable() {

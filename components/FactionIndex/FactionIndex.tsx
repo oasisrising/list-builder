@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Unit } from '../../models/Unit';
-import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
+import { UnitDataContext } from '../../providers/UnitDataProvider/UnitDataContext';
 import React from 'react';
 
 export function FactionIndexTable() {

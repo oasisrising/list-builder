@@ -1,3 +1,5 @@
+'use client';
+
 import { ThemeOptions, ThemeProvider, createTheme } from '@mui/material/styles';
 import { ReactNode } from 'react';
 

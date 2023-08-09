@@ -18,7 +18,7 @@ import {
 import { UnitStatDisplay } from './components/UnitStatDisplay';
 import { DARKER_GREY, DARK_GREY } from '../../styles/CustomTheme';
 import { WeaponTable } from './components/WeaponsTable';
-import { UnitDataContext } from '../UnitDataProvider/UnitDataContext';
+import { UnitDataContext } from '../../providers/UnitDataProvider/UnitDataContext';
 import _ from 'lodash';
 import { PointsDisplay } from './components/PointsDisplay';
 
@@ -134,7 +134,7 @@ const SpecialRulesDisplay: React.FC<{ title: string; rules: string[] }> = ({
           {title}
         </Typography>
         {rules.map((line) => (
-          <Typography variant='body2' sx={{ paddingLeft: '4px' }}>
+          <Typography variant='body2' sx={{ paddingLeft: '4px' }} key={line}>
             {line}
           </Typography>
         ))}
@@ -167,13 +167,13 @@ const SpecialAbilitiesDisplay: React.FC<{
           {title}
         </Typography>
         {abilities.map((ability) => (
-          <>
+          <Box key={ability.name}>
             <Typography variant='body2' sx={{ paddingLeft: '4px' }}>
               <b>{ability.name}</b>
               {`: `}
               {ability.description}
             </Typography>
-          </>
+          </Box>
         ))}
       </Paper>
     </Grid>

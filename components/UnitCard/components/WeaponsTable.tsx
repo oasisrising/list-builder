@@ -12,7 +12,7 @@ import {
 import { DARK_GREY } from '../../../styles/CustomTheme';
 import { StyledTooltip as Tooltip } from '../../StyledTooltip';
 import React from 'react';
-import { WeaponDataContext } from '../../WeaponDataProvider/WeaponDataContext';
+import { WeaponDataContext } from '../../../providers/WeaponDataProvider/WeaponDataContext';
 
 export const WeaponTable: React.FC<{
   stats: StatType[];
@@ -65,6 +65,7 @@ export const WeaponTable: React.FC<{
               justifyContent: 'center',
               alignItems: 'center',
             }}
+            key={weapon.name}
           >
             <Grid
               item
@@ -127,12 +128,12 @@ const SpecialRulesDisplay: React.FC<{ specialRules: WeaponSpecialRules[] }> = ({
     <Box display='flex'>
       <Typography variant='subtitle2'>{`[`}</Typography>
       {specialRules.map((specialRule, index) => (
-        <>
+        <Box key={specialRule.name} display='flex'>
           <SpecialRuleTooltip rule={specialRule} />
           {index < specialRules.length - 1 && (
             <Typography variant='subtitle2'>,&nbsp;</Typography>
           )}
-        </>
+        </Box>
       ))}
       <Typography variant='subtitle2'>{`]`}</Typography>
     </Box>

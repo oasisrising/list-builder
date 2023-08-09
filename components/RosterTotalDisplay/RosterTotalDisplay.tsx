@@ -1,7 +1,7 @@
 'use client';
 
 import { Typography } from '@mui/material';
-import { RosterDataContext } from '../RosterDataProvider/RosterDataContext';
+import { RosterDataContext } from '../../providers/RosterDataProvider/RosterDataContext';
 import React from 'react';
 import _ from 'lodash';
 

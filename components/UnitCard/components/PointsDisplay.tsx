@@ -2,7 +2,7 @@ import { AddCircle, RemoveCircle } from '@mui/icons-material';
 import { Box, Typography, Tooltip, IconButton } from '@mui/material';
 import { RosterUnit, Unit, UnitPointsData } from '../../../models/Unit';
 import React from 'react';
-import { RosterDataContext } from '../../RosterDataProvider/RosterDataContext';
+import { RosterDataContext } from '../../../providers/RosterDataProvider/RosterDataContext';
 import _ from 'lodash';
 
 export const PointsDisplay: React.FC<{ unit: Unit }> = ({ unit }) => {
