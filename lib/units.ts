@@ -40,7 +40,12 @@ export function getName(lines: string[], lineIndex: number) {
 export function getKeywords(lines: string[], lineIndex: number) {
   let keywords = [];
   let nextLineIndex = lineIndex;
-  while (lines[nextLineIndex] !== RANGED_WEAPON_IDENTIFIER) {
+
+  while (
+    lines[nextLineIndex] !== RANGED_WEAPON_IDENTIFIER &&
+    lines[nextLineIndex] !== MELEE_WEAPON_IDENTIFIER &&
+    lines[nextLineIndex] !== ABILITIES_IDENTINTIFIER
+  ) {
     // strip off the KEYWORDS: string
     keywords = keywords.concat(
       lines[nextLineIndex]
@@ -76,7 +81,10 @@ export function getWeaponSpecialRules(line: string) {
 export function getWeapons(lines: string[], lineIndex: number) {
   let nextLineIndex = lineIndex;
   let weapons: WeaponStat[] = [];
-  while (lines[nextLineIndex] !== 'FACTION KEYWORDS:') {
+  while (
+    lines[nextLineIndex] !== 'FACTION KEYWORDS:' &&
+    lines[nextLineIndex] !== 'ABILITIES'
+  ) {
     if (
       lines[nextLineIndex] !== 'RANGED WEAPONS RANGE A BS S AP D' &&
       lines[nextLineIndex] !== 'MELEE WEAPONS RANGE A WS S AP D' &&
@@ -311,40 +319,44 @@ export function getSortedUnitsData(): Faction[] {
       const lines = fileContents.split('\n');
 
       let lineIndex = 0;
-      let result: any = getName(lines, lineIndex);
-      const name = result.name;
-      lineIndex = result.nextLineIndex;
+      try {
+        let result: any = getName(lines, lineIndex);
+        const name = result.name;
+        lineIndex = result.nextLineIndex;
 
-      //parse keywords
-      result = getKeywords(lines, lineIndex);
-      const keywords = result.keywords;
-      lineIndex = result.nextLineIndex;
+        //parse keywords
+        result = getKeywords(lines, lineIndex);
+        const keywords = result.keywords;
+        lineIndex = result.nextLineIndex;
 
-      // parse weapons
-      result = getWeapons(lines, lineIndex);
-      const weapons = result.weapons;
-      lineIndex = result.nextLineIndex;
+        // parse weapons
+        result = getWeapons(lines, lineIndex);
+        const weapons = result.weapons;
+        lineIndex = result.nextLineIndex;
 
-      // advance to unit stats
-      const { unitStats } = getStats(lines);
-      const { wargearOptions } = getWargearOptions(lines);
-      const { unitComposition } = getUnitComposition(lines, name);
-      const { leadership } = getLeadership(lines, name);
-      const { abilities } = getAbilities(lines);
-      const { wargearAbilities } = getWargearAbilities(lines);
-      return {
-        id: unitId,
-        name,
-        points: pointsData.filter((data) => data.id === unitId),
-        unitStats,
-        weapons,
-        keywords,
-        wargearOptions,
-        unitComposition,
-        leadership,
-        abilities,
-        wargearAbilities,
-      };
+        // advance to unit stats
+        const { unitStats } = getStats(lines);
+        const { wargearOptions } = getWargearOptions(lines);
+        const { unitComposition } = getUnitComposition(lines, name);
+        const { leadership } = getLeadership(lines, name);
+        const { abilities } = getAbilities(lines);
+        const { wargearAbilities } = getWargearAbilities(lines);
+        return {
+          id: unitId,
+          name,
+          points: pointsData.filter((data) => data.id === unitId),
+          unitStats,
+          weapons,
+          keywords,
+          wargearOptions,
+          unitComposition,
+          leadership,
+          abilities,
+          wargearAbilities,
+        };
+      } catch (error) {
+        console.error(`Error parsing ${fileName}: ${lineIndex} ${error}`);
+      }
     });
     return { id: factionId, units: allUnitsData };
   });

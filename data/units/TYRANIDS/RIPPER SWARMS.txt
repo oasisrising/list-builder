@@ -1,0 +1,29 @@
+RIPPER SWARMS
+KEYWORDS: Swarm, Great Devourer, Ripper Swarms
+RANGED WEAPONS RANGE A BS S AP D
+Spinemaws [PISTOL] 6" 4 5+ 3 0 1
+MELEE WEAPONS RANGE A WS S AP D
+Xenos claws and teeth [SUSTAINED HITS 1] Melee 6 5+ 2 0 1
+FACTION KEYWORDS:
+Tyranids
+ABILITIES
+CORE: Deep Strike
+FACTION: Synapse
+Chitinous Horrors (Aura): While an enemy unit is within
+Engagement Range of this unit, halve the Objective Control
+characteristic of models in that enemy unit.
+M T SV W LD OC
+6" 2 6+ 4 8+ 0
+WARGEAR OPTIONS
+■ All models in this unit can each be equipped with 1 spinemaws.
+UNIT COMPOSITION
+■ 3-6 Ripper Swarms
+Every model is equipped with: xenos claws and teeth.
+RIPPER SWARMS
+Living carpets of Rippers squirm across the ground wherever the
+Tyranid swarms advance. Little more than simple eating machines,
+these chitinous horrors swarm over the wounded and dead alike, and
+can even drag down trained warriors in sufficient numbers. Once a
+Ripper’s fangs sink home, it will not let go…
+KEYWORDS: Swarm, Great Devourer, Ripper Swarms FACTION KEYWORDS:
+Tyranids

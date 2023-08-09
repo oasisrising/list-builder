@@ -1,0 +1,119 @@
+Barbgaunts
+5 50
+10 100
+Biovores
+1 65
+2 130
+3 195
+Broodlord
+1 100
+Carnifexes
+1 125
+2 250
+Deathleaper
+1 80
+Exocrine
+1 135
+Gargoyles
+10 75
+20 150
+Genestealers
+5 90
+10 180
+Harpy
+1 230
+Haruspex
+1 125
+Hive Crone
+1 200
+Hive Guard
+3 100
+6 200
+Hive Tyrant
+1 220
+Hormagaunts
+10 70
+20 140
+Lictor
+1 75
+Maleceptor
+1 165
+Mawloc
+1 145
+Mucolid Spores
+1 45
+2 90
+Neurogaunts
+11 45
+22 90
+Neurotyrant
+1 105
+Old One Eye
+1 140
+Parasite of Mortrex
+1 90
+Psychophage
+1 125
+Pyrovores
+1 30
+2 60
+3 90
+Raveners
+3 75
+6 150
+Ripper Swarms
+3 35
+6 70
+Screamer-Killer
+1 180
+Spore MInes
+3 50
+6 100
+Sporocyst
+1 145
+Termagants
+10 60
+20 120
+Tervigon
+1 200
+The Swarmlord
+1 250
+Toxicrene
+1 200
+Trygon
+1 180
+Tyranid Warriors with Melee Bio-weapons
+3 90
+6 180
+Tyranid Warriors with Ranged Bio-weapons
+3 70
+6 140
+Tyrannocyte
+1 105
+Tyrannofex
+1 200
+Tyrant Guard
+3 95
+6 190
+Venomthropes
+3 70
+6 140
+Von Ryan’s Leapers
+3 75
+6 150
+Winged Hive Tyrant
+1 195
+Winged Tyranid Prime
+1 80
+Zoanthropes
+3 90
+6 180
+FORGE WORLD POINTS VALUES
+Barbed Hierodule
+1 305
+Harridan
+1 655
+Hierophant
+1 810
+Scythed Hierodule
+1 305

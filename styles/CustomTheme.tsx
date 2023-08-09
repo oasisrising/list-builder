@@ -2,8 +2,10 @@ import { ThemeOptions, ThemeProvider, createTheme } from '@mui/material/styles';
 import { ReactNode } from 'react';
 
 export const LIGHT_GREY = '#dfe2e1';
-export const DARK_GREY = '#4a6570';
-export const DARKER_GREY = '#02131e';
+export const DARK_GREY = '#3e1844';
+// TYRANIDS '#3e1844'
+// GREY KNIGHTS '#4a6570';
+export const DARKER_GREY = '#121316';
 
 declare module '@mui/material/styles' {
   interface BreakpointOverrides {
@@ -38,8 +40,8 @@ export const themeOptions: ThemeOptions = {
       main: '#ffffff',
     },
     background: {
-      default: '#4a6570',
-      paper: '#dfe2e1',
+      default: DARK_GREY,
+      paper: LIGHT_GREY,
     },
   },
   typography: {

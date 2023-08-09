@@ -69,12 +69,16 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
         <WeaponTable
           stats={RangedStats}
           type={WeaponType.Ranged}
-          weapons={unit.weapons}
+          weapons={unit.weapons.filter(
+            (weapon) => weapon.weaponType === WeaponType.Ranged
+          )}
         />
         <WeaponTable
           stats={MeleeStats}
           type={WeaponType.Melee}
-          weapons={unit.weapons}
+          weapons={unit.weapons.filter(
+            (weapon) => weapon.weaponType === WeaponType.Melee
+          )}
         />
         <Grid container sx={{ backgroundColor: DARKER_GREY }}>
           <Grid item mobile={12} tablet={6}>

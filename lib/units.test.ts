@@ -1,7 +1,9 @@
 import { StatType, WeaponStat, WeaponType } from '../models/Unit';
 import {
+  ABILITIES_IDENTINTIFIER,
   FACTION_IDENTIFIER,
   INVULNERABLE_SAVE_IDENTIFIER,
+  MELEE_WEAPON_IDENTIFIER,
   RANGED_WEAPON_IDENTIFIER,
   STAT_LINE_IDENTIFIER,
   getAbilities,
@@ -28,19 +30,18 @@ describe('unit parsing tests', () => {
   describe('getKeywords', () => {
     it('should parse keywords', () => {
       const lines = [
-        'KEYWORDS: Infantry, Character, Psyker, Terminator, Imperium,',
-        'Brother-Captain',
-        RANGED_WEAPON_IDENTIFIER,
+        'BROODLORD',
+        'KEYWORDS: Infantry, Character, Psyker, Great Devourer, Broodlord',
+        ABILITIES_IDENTINTIFIER,
       ];
-      const lineIndex = 0;
+      const lineIndex = 1;
       const result = getKeywords(lines, lineIndex);
       expect(result.keywords).toEqual([
         'Infantry',
         'Character',
         'Psyker',
-        'Terminator',
-        'Imperium',
-        'Brother-Captain',
+        'Great Devourer',
+        'Broodlord',
       ]);
       expect(result.nextLineIndex).toEqual(2);
     });

@@ -1,0 +1,31 @@
+HIVE GUARD
+KEYWORDS: Infantry, Great Devourer, Hive Guard
+RANGED WEAPONS RANGE A BS S AP D
+Impaler cannon [HEAVY, INDIRECT FIRE] 36" 4 4+ 5 -1 1
+Shockcannon [ANTI-VEHICLE 2+] 24" 2 3+ 7 -1 3
+MELEE WEAPONS RANGE A WS S AP D
+Xenos claws and teeth Melee 3 4+ 5 0 1
+FACTION KEYWORDS:
+Tyranids
+ABILITIES
+FACTION: Synapse
+Defensive Stance: Each time you target this unit with the Fire
+Overwatch Stratagem, while resolving that Stratagem, hits are
+scored on unmodified Hit rolls of 5+, or unmodified Hit rolls of
+4+ instead if this unit is within range of an objective marker.
+M T SV W LD OC
+6" 7 3+ 4 8+ 1
+WARGEAR OPTIONS
+■ Any number of models can each have their shockcannon replaced with 1 impaler cannon.
+UNIT COMPOSITION
+■ 3-6 Hive Guard
+Every model is equipped with: shockcannon; xenos claws
+and teeth.
+HIVE GUARD
+Hive Guard are spawned to protect Tyranid bio-architecture and
+vital spore-seeding sites. They carry a monstrous arsenal of grafted
+bio-weapons and are instinctively driven – or sometimes synaptically
+impelled – to lay down heavy hails of firepower against those prey
+organisms the Hive Mind wishes to see eradicated.
+KEYWORDS: Infantry, Great Devourer, Hive Guard FACTION KEYWORDS:
+Tyranids

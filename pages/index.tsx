@@ -21,7 +21,7 @@ export async function getStaticProps() {
   const allFactionsData = getSortedUnitsData();
   return {
     props: {
-      allUnitsData: allFactionsData[0].units,
+      allUnitsData: allFactionsData[1].units,
       allWeaopnsAbilities: getWeaponAbilitiesData(),
     },
   };

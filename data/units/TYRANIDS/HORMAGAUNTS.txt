@@ -1,0 +1,28 @@
+HORMAGAUNTS
+KEYWORDS: Infantry, Battleline, Great Devourer, Endless Multitude,
+Hormagaunts
+MELEE WEAPONS RANGE A WS S AP D
+Hormagaunt talons Melee 3 4+ 3 -1 1
+FACTION KEYWORDS:
+Tyranids
+ABILITIES
+FACTION: Synapse
+Bounding Leap: This unit is eligible to declare a charge in a
+turn in which it Advanced.
+M T SV W LD OC
+10" 3 5+ 1 8+ 2
+WARGEAR OPTIONS
+■ None
+UNIT COMPOSITION
+■ 10-20 Hormagaunts
+Every model is equipped with: Hormagaunt talons.
+HORMAGAUNTS
+Swarming shock troops, Hormagaunts are seeded onto prey worlds in
+their billions. As simple hunter-slayer organisms, they can be left to
+rampage, wearing down defence lines and forcing the prey to expend
+lives and ammunition. Many formidable bastions have been buried in
+literal mountains of these chitinous horrors.
+KEYWORDS: Infantry, Battleline, Great Devourer, Endless Multitude,
+Hormagaunts
+FACTION KEYWORDS:
+Tyranids

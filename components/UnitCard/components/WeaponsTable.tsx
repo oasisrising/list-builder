@@ -19,6 +19,9 @@ export const WeaponTable: React.FC<{
   type: WeaponType;
   weapons: WeaponStat[];
 }> = ({ stats, type, weapons }) => {
+  if (weapons.length === 0) {
+    return null;
+  }
   return (
     <Box>
       <Grid container>
@@ -50,54 +53,52 @@ export const WeaponTable: React.FC<{
             </HeaderRowItem>
           </Tooltip>
         ))}
-        {weapons
-          .filter((weapon) => weapon.weaponType === type)
-          .map((weapon) => (
+        {weapons.map((weapon) => (
+          <Grid
+            mobile={12}
+            container
+            sx={{
+              borderBottomStyle: 'solid',
+              borderBottomWidth: 'thin',
+              borderBottomColor: DARK_GREY,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <Grid
-              mobile={12}
-              container
+              item
+              mobile={5}
               sx={{
-                borderBottomStyle: 'solid',
-                borderBottomWidth: 'thin',
-                borderBottomColor: DARK_GREY,
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
+                justifyContent: 'start',
+                paddingLeft: '4px',
               }}
             >
-              <Grid
-                item
-                mobile={5}
-                sx={{
-                  justifyContent: 'start',
-                  paddingLeft: '4px',
-                }}
-              >
-                <Typography>{weapon.name}</Typography>
-              </Grid>
-              {stats.map((stat, index) => (
-                <TableRowItem key={stat} item mobile={index === 0 ? 2 : 1}>
-                  <Typography>
-                    {
-                      weapon.weaponStats.find(
-                        (weaponStat) => weaponStat.type === stat
-                      )?.value
-                    }
-                  </Typography>
-                </TableRowItem>
-              ))}
-              <Grid
-                item
-                mobile={12}
-                sx={{
-                  justifyContent: 'start',
-                  paddingLeft: '4px',
-                }}
-              >
-                <SpecialRulesDisplay specialRules={weapon.specialRules} />
-              </Grid>
+              <Typography>{weapon.name}</Typography>
             </Grid>
-          ))}
+            {stats.map((stat, index) => (
+              <TableRowItem key={stat} item mobile={index === 0 ? 2 : 1}>
+                <Typography>
+                  {
+                    weapon.weaponStats.find(
+                      (weaponStat) => weaponStat.type === stat
+                    )?.value
+                  }
+                </Typography>
+              </TableRowItem>
+            ))}
+            <Grid
+              item
+              mobile={12}
+              sx={{
+                justifyContent: 'start',
+                paddingLeft: '4px',
+              }}
+            >
+              <SpecialRulesDisplay specialRules={weapon.specialRules} />
+            </Grid>
+          </Grid>
+        ))}
       </Grid>
     </Box>
   );

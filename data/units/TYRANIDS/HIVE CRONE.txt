@@ -1,0 +1,36 @@
+HIVE CRONE
+KEYWORDS: Monster, Fly, Aircraft, Great Devourer, Hive Crone
+RANGED WEAPONS RANGE A BS S AP D
+Drool cannon [TORRENT] 12" 2D6 N/A 6 -1 1
+Stinger salvoes 24" 8 3+ 5 0 1
+Tentaclids [ANTI-VEHICLE 4+, DEVASTATING WOUNDS] 36" 4 3+ 7 0 2
+MELEE WEAPONS RANGE A WS S AP D
+Scything wings Melee 4 4+ 7 -1 2
+Thorax spur [ANTI-FLY 2+, EXTRA ATTACKS] Melee 1 3+ 10 -3 D6
+FACTION KEYWORDS:
+Tyranids
+ABILITIES
+CORE: Deadly Demise D3, Hover
+FACTION: Synapse
+Airborne Predator: Each time this model makes a ranged
+attack that targets a unit that can Fly, add 1 to the Hit roll.
+DAMAGED: 1-4 WOUNDS REMAINING
+While this model has 1-4 wounds remaining, each time this
+model makes an attack, subtract 1 from the Hit roll.
+T SV W LD OC
+20+" 9 3+ 12 8+ 0
+M
+WARGEAR OPTIONS
+■ None
+UNIT COMPOSITION
+■ 1 Hive Crone
+This model is equipped with: drool cannon; stinger salvoes;
+tentaclids; scything wings; thorax spur.
+HIVE CRONE
+Hive Crones scour the skies for prey fighter craft. The tentaclids they
+release pursue enemy aircraft before erupting in bio-electric pulses
+that banish motive force and send the dark, dead machines tumbling
+groundward. Then, drool cannons slathering, the Hive Crones dive
+down to seek fresh, land-based prey.
+KEYWORDS: Monster, Fly, Aircraft, Great Devourer, Hive Crone FACTION KEYWORDS:
+Tyranids
