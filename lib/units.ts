@@ -8,13 +8,16 @@ import {
   StatType,
   Unit,
   UnitPointsData,
+  WeaponSpecialRules,
   WeaponStat,
   WeaponType,
 } from '../models/Unit';
 import { Faction } from '../models/Faction';
 import _, { last } from 'lodash';
+import { WeaponAbility } from '../models/WeaponAbilities';
 
-const unitsDirectory = path.join(process.cwd(), 'data/units');
+const dataDirectory = path.join(process.cwd(), 'data');
+const unitsDirectory = path.join(dataDirectory, 'units');
 const UnitStatTypes = ['M', 'T', 'SV', 'W', 'LD', 'OC'];
 const STAT_COUNT = 6;
 
@@ -38,7 +41,7 @@ export function getName(lines: string[], lineIndex: number) {
 }
 
 export function getKeywords(lines: string[], lineIndex: number) {
-  let keywords = [];
+  let keywords: string[] = [];
   let nextLineIndex = lineIndex;
 
   while (
@@ -61,7 +64,7 @@ export function getKeywords(lines: string[], lineIndex: number) {
   };
 }
 
-export function getWeaponSpecialRules(line: string) {
+export function getWeaponSpecialRules(line: string): WeaponSpecialRules[] {
   return line
     .replace('[', '')
     .replace(']', '')
@@ -91,8 +94,8 @@ export function getWeapons(lines: string[], lineIndex: number) {
       !lines[nextLineIndex].match(/One Shot:/)
     ) {
       let name = '';
-      let stats = [];
-      let specialRules = [];
+      let stats: string[] = [];
+      let specialRules: WeaponSpecialRules[] = [];
 
       // are the stats on a different lines?
       if (lines[nextLineIndex + 1][0] === '[') {
@@ -205,7 +208,7 @@ export function getUnitComposition(lines: string[], name: string) {
   );
   if (nextLineIndex < 0) {
     return {
-      wargearOptions: [],
+      unitComposition: [],
     };
   }
   const lastLine = lines.findIndex(
@@ -301,6 +304,11 @@ export const parseAbilities = (lines: string[]) => {
 };
 
 export function getSortedUnitsData(): Faction[] {
+  const factionColorsFile = fs.readFileSync(
+    `${dataDirectory}/faction-colors.json`,
+    'utf8'
+  );
+  const factionColors = JSON.parse(factionColorsFile);
   const factionDirectories = fs.readdirSync(unitsDirectory);
 
   const pointsData = getUnitPointsData();
@@ -310,7 +318,7 @@ export function getSortedUnitsData(): Faction[] {
     const factionName = directory.replace(/\.txt$/, '').toLowerCase();
     const factionId = factionName.replaceAll(' ', '-');
     const fileNames = fs.readdirSync(`${unitsDirectory}/${directory}`);
-    const allUnitsData = fileNames.map((fileName): Unit => {
+    const allUnitsData = fileNames.map((fileName): Unit | null => {
       // Remove ".txt" from file name to get id
       const unitId = fileName.replace(/\.txt$/, '').toLowerCase();
 
@@ -358,8 +366,14 @@ export function getSortedUnitsData(): Faction[] {
       } catch (error) {
         console.error(`Error parsing ${fileName}: ${lineIndex} ${error}`);
       }
+      return null;
     });
-    return { id: factionId, name: factionName, units: allUnitsData };
+    return {
+      id: factionId,
+      color: factionColors[factionId],
+      name: factionName,
+      units: allUnitsData.filter((unit) => unit !== null) as Unit[],
+    };
   });
   return allFactionsData;
 }

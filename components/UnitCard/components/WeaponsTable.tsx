@@ -1,7 +1,7 @@
 'use client';
 import { mdiCrosshairs, mdiSwordCross } from '@mdi/js';
 import Icon from '@mdi/react';
-import { Box, Typography, Grid, styled } from '@mui/material';
+import { Box, Typography, Grid, styled, useTheme } from '@mui/material';
 import {
   StatType,
   WeaponSpecialRules,
@@ -9,7 +9,6 @@ import {
   WeaponType,
   statDescriptions,
 } from '../../../models/Unit';
-import { DARK_GREY } from '../../../styles/CustomTheme';
 import { StyledTooltip as Tooltip } from '../../StyledTooltip';
 import React from 'react';
 import { WeaponDataContext } from '../../../providers/WeaponDataProvider/WeaponDataContext';
@@ -19,6 +18,7 @@ export const WeaponTable: React.FC<{
   type: WeaponType;
   weapons: WeaponStat[];
 }> = ({ stats, type, weapons }) => {
+  const theme = useTheme();
   if (weapons.length === 0) {
     return null;
   }
@@ -60,7 +60,7 @@ export const WeaponTable: React.FC<{
             sx={{
               borderBottomStyle: 'solid',
               borderBottomWidth: 'thin',
-              borderBottomColor: DARK_GREY,
+              borderBottomColor: theme.palette.background.default,
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
@@ -105,12 +105,12 @@ export const WeaponTable: React.FC<{
   );
 };
 
-const HeaderRowItem = styled(Grid)({
-  background: DARK_GREY,
+const HeaderRowItem = styled(Grid)(({ theme }) => ({
+  background: theme.palette.background.default,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-});
+}));
 
 const TableRowItem = styled(Grid)({
   display: 'flex',

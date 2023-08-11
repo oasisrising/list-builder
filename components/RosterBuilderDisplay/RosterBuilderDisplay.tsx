@@ -4,19 +4,11 @@ import React from 'react';
 import { FactionDataContext } from '../../providers/FactionDataProvider/FactionDataContext';
 import UnitDataProvider from '../../providers/UnitDataProvider/UnitDataContext';
 import RosterDataProvider from '../../providers/RosterDataProvider/RosterDataContext';
-import { Box, AppBar, Toolbar, IconButton } from '@mui/material';
-import {
-  FactionIndexMenu,
-  FactionIndexTable,
-} from '../FactionIndex/FactionIndex';
-import { RosterMenu, RosterTable } from '../Roster/Roster';
-import { RosterTotalDisplay } from '../RosterTotalDisplay/RosterTotalDisplay';
-import { StyledTooltip } from '../StyledTooltip';
-import ToolbarMenuButton from '../ToolbarMenuButton/ToolbarMenuButton';
+import { Box, Toolbar } from '@mui/material';
+import { FactionIndexTable } from '../FactionIndex/FactionIndex';
+import { RosterTable } from '../Roster/Roster';
 import { UnitCardList } from '../UnitCardList/UnitCardList';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import image from '../../public/images/Image_029.png';
-import Link from 'next/link';
+import { RosterToolbar } from './components/RosterToolbar/RosterToolbar';
 
 export const RosterBuilderDisplay: React.FC<{ factionId: string }> = ({
   factionId,
@@ -32,32 +24,7 @@ export const RosterBuilderDisplay: React.FC<{ factionId: string }> = ({
     <UnitDataProvider allUnitsData={factionData.units}>
       <RosterDataProvider>
         <Box sx={{ maxHeight: '100%', overflow: 'auto' }}>
-          <AppBar>
-            <Toolbar
-              sx={{
-                backgroundImage: `url(${image.src})`,
-                backgroundSize: 'cover',
-                display: 'flex',
-                justifyContent: 'space-between',
-              }}
-            >
-              <Box display='flex' alignItems='center'>
-                <StyledTooltip title='Switch faction'>
-                  <Link href={`/`}>
-                    <IconButton color='secondary'>
-                      <ArrowBackIcon />
-                    </IconButton>
-                  </Link>
-                </StyledTooltip>
-                <ToolbarMenuButton
-                  MenuItems={FactionIndexMenu}
-                  title={`${factionData.name} index`}
-                />
-              </Box>
-              <RosterTotalDisplay />
-              <ToolbarMenuButton MenuItems={RosterMenu} title='Your roster' />
-            </Toolbar>
-          </AppBar>
+          <RosterToolbar faction={factionData} />
           <Box display='flex' flexDirection='column' height='100vh'>
             <Toolbar />
             <Box

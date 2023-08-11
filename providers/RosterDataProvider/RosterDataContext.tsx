@@ -7,15 +7,13 @@ import _ from 'lodash';
 
 interface RosterDataContextProps {
   rosterUnits: RosterUnit[];
-  addUnit: (unit: Unit, points: UnitPointsData) => void;
-  removeUnit: (unitPointsData: UnitPointsData) => void;
+  addUnit?: (unit: Unit, points: UnitPointsData) => void;
+  removeUnit?: (unitPointsData: UnitPointsData) => void;
   unitCount: number;
 }
 
 export const RosterDataContext = createContext<RosterDataContextProps>({
   rosterUnits: [],
-  addUnit: null,
-  removeUnit: null,
   unitCount: 0,
 });
 
@@ -26,7 +24,9 @@ export default function RosterDataProvider({ children }) {
   const [unitCount, setUnitCount] = React.useState(0);
 
   React.useEffect(() => {
-    setRosterUnits(JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []);
+    setRosterUnits(
+      JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '') || []
+    );
   }, []);
 
   React.useEffect(() => {

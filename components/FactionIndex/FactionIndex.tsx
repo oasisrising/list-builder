@@ -14,6 +14,9 @@ import React from 'react';
 
 export function FactionIndexTable() {
   const { allUnitsData, setSelectedUnit } = React.useContext(UnitDataContext);
+  if (!setSelectedUnit) {
+    return null;
+  }
 
   const handleRowClick = (selectedId) => () => {
     setSelectedUnit(selectedId);
@@ -39,6 +42,9 @@ export function FactionIndexTable() {
 
 export function FactionIndexMenu({ onClick }) {
   const { allUnitsData, setSelectedUnit } = React.useContext(UnitDataContext);
+  if (!setSelectedUnit) {
+    return null;
+  }
 
   const handleClick = (selectedId) => () => {
     setSelectedUnit(selectedId);

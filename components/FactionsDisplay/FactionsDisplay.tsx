@@ -1,12 +1,24 @@
 'use client';
 
 import React from 'react';
-import { Card, CardContent, Grid, Typography } from '@mui/material';
+import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import { FactionDataContext } from '../../providers/FactionDataProvider/FactionDataContext';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function FactionsDisplay() {
-  const { allFactionData } = React.useContext(FactionDataContext);
+  const { allFactionData, setCurrentFaction } =
+    React.useContext(FactionDataContext);
+
+  const router = useRouter();
+
+  if (!setCurrentFaction) {
+    return null;
+  }
+
+  const handleFactionClicked = (id: string) => () => {
+    setCurrentFaction(id);
+    router.push(`/factions/${id}`);
+  };
 
   return (
     <Grid container spacing={2}>
@@ -16,21 +28,16 @@ export default function FactionsDisplay() {
             sx={{
               width: '180px',
               height: '180px',
-              display: 'flex',
               alignContent: 'center',
-              justifyItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              display: 'flex',
+              flexWrap: 'wrap',
+              background: faction.color,
             }}
+            onClick={handleFactionClicked(faction.id)}
           >
-            <Link href={`/factions/${faction.id}`}>
-              <CardContent>
-                <Typography variant='h3' color='primary'>
-                  {faction.name}
-                </Typography>
-                <Typography variant='subtitle1'>
-                  {`${faction.units.length} units`}
-                </Typography>
-              </CardContent>
-            </Link>
+            <Typography variant='h3'>{faction.name}</Typography>
           </Card>
         </Grid>
       ))}

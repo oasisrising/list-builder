@@ -43,6 +43,9 @@ export const RosterPointControls: React.FC<{
   rosterUnits: RosterUnit[];
 }> = ({ unit, points, rosterUnits }) => {
   const { removeUnit, addUnit } = React.useContext(RosterDataContext);
+  if (!removeUnit || !addUnit) {
+    return null;
+  }
 
   const handleRemoveFromRoster = () => {
     removeUnit(points);

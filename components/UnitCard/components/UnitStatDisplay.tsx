@@ -1,10 +1,12 @@
 'use client';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, useTheme } from '@mui/material';
 import { Stat, statDescriptions } from '../../../models/Unit';
-import { DARK_GREY, LIGHT_GREY } from '../../../styles/CustomTheme';
+import { LIGHT_GREY } from '../../../styles/CustomTheme';
 import { StyledTooltip as Tooltip } from '../../StyledTooltip';
 
 export const UnitStatDisplay: React.FC<Stat> = ({ type, value }) => {
+  const theme = useTheme();
+
   return (
     <Grid item>
       <Tooltip title={statDescriptions[type]}>
@@ -15,14 +17,14 @@ export const UnitStatDisplay: React.FC<Stat> = ({ type, value }) => {
             textAlign: 'center',
             padding: '4px',
             margin: '4px',
-            border: `2px solid ${DARK_GREY}`,
+            border: `2px solid ${theme.palette.background.default}`,
             backgroundColor: LIGHT_GREY,
           }}
         >
-          <Typography variant='h3' color={DARK_GREY}>
+          <Typography variant='h3' color={theme.palette.background.default}>
             {type}
           </Typography>
-          <Typography variant='h2' color={DARK_GREY}>
+          <Typography variant='h2' color={theme.palette.background.default}>
             {value}
           </Typography>
         </Box>

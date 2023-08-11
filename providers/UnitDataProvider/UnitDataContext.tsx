@@ -6,18 +6,17 @@ import React from 'react';
 
 interface UnitDataContextProps {
   allUnitsData: Unit[];
-  setSelectedUnit: (unitId: string) => void;
-  selectedUnit: string | null;
+  setSelectedUnit?: (unitId: string) => void;
+  selectedUnit: string;
 }
 
 export const UnitDataContext = createContext<UnitDataContextProps>({
   allUnitsData: [],
-  setSelectedUnit: null,
-  selectedUnit: null,
+  selectedUnit: '',
 });
 
 export default function UnitDataProvider({ children, allUnitsData }) {
-  const [selectedUnit, setSelectedUnit] = React.useState<string>(null);
+  const [selectedUnit, setSelectedUnit] = React.useState<string>('');
   return (
     <UnitDataContext.Provider
       value={{

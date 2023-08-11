@@ -17,6 +17,9 @@ import _ from 'lodash';
 export function RosterTable() {
   const { rosterUnits } = React.useContext(RosterDataContext);
   const { setSelectedUnit } = React.useContext(UnitDataContext);
+  if (!setSelectedUnit) {
+    return null;
+  }
 
   const handleRowClick = (selectedId) => () => {
     setSelectedUnit(selectedId);
@@ -55,6 +58,9 @@ export function RosterTable() {
 export function RosterMenu({ onClick }) {
   const { rosterUnits: rosterUnits } = React.useContext(RosterDataContext);
   const { setSelectedUnit } = React.useContext(UnitDataContext);
+  if (!setSelectedUnit) {
+    return null;
+  }
 
   const handleClick = (selectedId) => () => {
     setSelectedUnit(selectedId);

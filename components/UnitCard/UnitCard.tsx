@@ -1,12 +1,5 @@
 'use client';
-import {
-  Box,
-  Grid,
-  IconButton,
-  Paper,
-  Typography,
-  useTheme,
-} from '@mui/material';
+import { Box, Grid, Paper, Typography, useTheme } from '@mui/material';
 import React, { useRef } from 'react';
 import {
   Unit,
@@ -16,7 +9,7 @@ import {
   Ability,
 } from '../../models/Unit';
 import { UnitStatDisplay } from './components/UnitStatDisplay';
-import { DARKER_GREY, DARK_GREY } from '../../styles/CustomTheme';
+import { DARKER_GREY } from '../../styles/CustomTheme';
 import { WeaponTable } from './components/WeaponsTable';
 import { UnitDataContext } from '../../providers/UnitDataProvider/UnitDataContext';
 import _ from 'lodash';
@@ -26,10 +19,10 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
   const { selectedUnit } = React.useContext(UnitDataContext);
 
   const theme = useTheme();
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    if (selectedUnit === unit.id) {
+    if (selectedUnit === unit.id && ref?.current !== null) {
       ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [selectedUnit]);
@@ -46,7 +39,10 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
       >
         <Grid
           container
-          sx={{ padding: theme.spacing(1), backgroundColor: DARK_GREY }}
+          sx={{
+            padding: theme.spacing(1),
+            backgroundColor: theme.palette.background.default,
+          }}
         >
           <Grid item mobile={12} desktop={8}>
             <Typography variant='h1' color='white'>
@@ -129,7 +125,10 @@ const SpecialRulesDisplay: React.FC<{ title: string; rules: string[] }> = ({
       >
         <Typography
           variant='h3'
-          sx={{ backgroundColor: DARK_GREY, paddingLeft: '4px' }}
+          sx={{
+            backgroundColor: theme.palette.background.default,
+            paddingLeft: '4px',
+          }}
         >
           {title}
         </Typography>
@@ -162,7 +161,10 @@ const SpecialAbilitiesDisplay: React.FC<{
       >
         <Typography
           variant='h3'
-          sx={{ backgroundColor: DARK_GREY, paddingLeft: '4px' }}
+          sx={{
+            backgroundColor: theme.palette.background.default,
+            paddingLeft: '4px',
+          }}
         >
           {title}
         </Typography>
