@@ -25,7 +25,7 @@ export default function RosterDataProvider({ children }) {
 
   React.useEffect(() => {
     setRosterUnits(
-      JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '') || []
+      JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]') || []
     );
   }, []);
 
