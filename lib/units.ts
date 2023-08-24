@@ -365,6 +365,7 @@ export function getSortedUnitsData(): Faction[] {
         };
       } catch (error) {
         console.error(`Error parsing ${fileName}: ${lineIndex} ${error}`);
+        throw error;
       }
       return null;
     });
