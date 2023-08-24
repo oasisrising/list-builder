@@ -22,7 +22,7 @@ export const RosterBuilderDisplay: React.FC<{ factionId: string }> = ({
   }
   return (
     <UnitDataProvider allUnitsData={factionData.units}>
-      <RosterDataProvider>
+      <RosterDataProvider factionId={factionId}>
         <Box sx={{ maxHeight: '100%', overflow: 'auto' }}>
           <RosterToolbar faction={factionData} />
           <Box display='flex' flexDirection='column' height='100vh'>

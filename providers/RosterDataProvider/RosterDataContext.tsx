@@ -19,19 +19,24 @@ export const RosterDataContext = createContext<RosterDataContextProps>({
 
 const LOCAL_STORAGE_KEY = 'luminnova-roster';
 
-export default function RosterDataProvider({ children }) {
+export default function RosterDataProvider({ factionId, children }) {
   const [rosterUnits, setRosterUnits] = React.useState<RosterUnit[]>([]);
   const [unitCount, setUnitCount] = React.useState(0);
 
   React.useEffect(() => {
     setRosterUnits(
-      JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]') || []
+      JSON.parse(
+        localStorage.getItem(`${LOCAL_STORAGE_KEY}_${factionId}`) || '[]'
+      ) || []
     );
-  }, []);
+  }, [factionId]);
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(rosterUnits));
+      localStorage.setItem(
+        `${LOCAL_STORAGE_KEY}_${factionId}`,
+        JSON.stringify(rosterUnits)
+      );
     }
   }, [rosterUnits, unitCount]);
 
