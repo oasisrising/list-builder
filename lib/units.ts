@@ -14,12 +14,12 @@ import {
 } from '../models/Unit';
 import { Faction } from '../models/Faction';
 import _, { last } from 'lodash';
-import { WeaponAbility } from '../models/WeaponAbilities';
 
 const dataDirectory = path.join(process.cwd(), 'data');
 const unitsDirectory = path.join(dataDirectory, 'units');
 const UnitStatTypes = ['M', 'T', 'SV', 'W', 'LD', 'OC'];
 const STAT_COUNT = 6;
+const UniqueWeaponAbilities = /(One Shot:|Hive Defences:)/;
 
 export const RANGED_WEAPON_IDENTIFIER = 'RANGED WEAPONS RANGE A BS S AP D';
 export const MELEE_WEAPON_IDENTIFIER = 'MELEE WEAPONS RANGE A WS S AP D';
@@ -91,7 +91,7 @@ export function getWeapons(lines: string[], lineIndex: number) {
     if (
       lines[nextLineIndex] !== 'RANGED WEAPONS RANGE A BS S AP D' &&
       lines[nextLineIndex] !== 'MELEE WEAPONS RANGE A WS S AP D' &&
-      !lines[nextLineIndex].match(/One Shot:/)
+      !lines[nextLineIndex].match(UniqueWeaponAbilities)
     ) {
       let name = '';
       let stats: string[] = [];
@@ -304,6 +304,7 @@ export const parseAbilities = (lines: string[]) => {
 };
 
 export function getSortedUnitsData(): Faction[] {
+  console.log('Loading faction data');
   const factionColorsFile = fs.readFileSync(
     `${dataDirectory}/faction-colors.json`,
     'utf8'

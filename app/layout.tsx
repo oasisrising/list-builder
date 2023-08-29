@@ -20,11 +20,9 @@ export default function RootLayout({
     <html lang='en'>
       <body>
         <FactionDataProvider allFactionData={allFactionData}>
-          <CustomTheme>
-            <WeaponsDataProvider allWeaponsData={allWeaponAbilities}>
-              {children}
-            </WeaponsDataProvider>
-          </CustomTheme>
+          <WeaponsDataProvider allWeaponsData={allWeaponAbilities}>
+            <CustomTheme>{children}</CustomTheme>
+          </WeaponsDataProvider>
         </FactionDataProvider>
       </body>
     </html>

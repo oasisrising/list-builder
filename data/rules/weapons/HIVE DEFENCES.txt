@@ -1,0 +1,4 @@
+HIVE DEFENCES
+Each time an enemy unit is set up or ends a Normal, Advance or Fall Back move within
+range of this weapon, if that enemy unit is an eligible target, the bearer can shoot with this weapon at
+that unit as if it were your Shooting phase (the bearer can do so up to four times per phase).

@@ -16,16 +16,8 @@ import _ from 'lodash';
 import { PointsDisplay } from './components/PointsDisplay';
 
 const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
-  const { selectedUnit } = React.useContext(UnitDataContext);
-
   const theme = useTheme();
-  const ref = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    if (selectedUnit === unit.id && ref?.current !== null) {
-      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, [selectedUnit]);
   return (
     <>
       <Paper
@@ -35,7 +27,6 @@ const UnitCard: React.FC<{ unit: Unit }> = ({ unit }) => {
           overflow: 'auto',
         }}
         elevation={5}
-        ref={ref}
       >
         <Grid
           container
@@ -132,8 +123,12 @@ const SpecialRulesDisplay: React.FC<{ title: string; rules: string[] }> = ({
         >
           {title}
         </Typography>
-        {rules.map((line) => (
-          <Typography variant='body2' sx={{ paddingLeft: '4px' }} key={line}>
+        {rules.map((line, index) => (
+          <Typography
+            variant='body2'
+            sx={{ paddingLeft: '4px' }}
+            key={`${index}${line}`}
+          >
             {line}
           </Typography>
         ))}

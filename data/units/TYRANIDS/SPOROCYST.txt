@@ -2,9 +2,7 @@ SPOROCYST
 KEYWORDS: Monster, Great Devourer, Sporocyst
 RANGED WEAPONS RANGE A BS S AP D
 Sporocyst bio-weapons [HIVE DEFENCES] 24" 5 4+ 5 -1 2
-Hive Defences: Each time an enemy unit is set up or ends a Normal, Advance or Fall Back move within
-range of this weapon, if that enemy unit is an eligible target, the bearer can shoot with this weapon at
-that unit as if it were your Shooting phase (the bearer can do so up to four times per phase).
+Hive Defences: Each time an enemy unit is set up or ends a Normal, Advance or Fall Back move within range of this weapon, if that enemy unit is an eligible target, the bearer can shoot with this weapon at that unit as if it were your Shooting phase (the bearer can do so up to four times per phase).
 MELEE WEAPONS RANGE A WS S AP D
 Flensing whips Melee 6 4+ 7 -1 1
 FACTION KEYWORDS:

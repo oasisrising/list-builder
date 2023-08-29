@@ -13,7 +13,12 @@ import { RosterToolbar } from './components/RosterToolbar/RosterToolbar';
 export const RosterBuilderDisplay: React.FC<{ factionId: string }> = ({
   factionId,
 }) => {
-  const { allFactionData } = React.useContext(FactionDataContext);
+  const { allFactionData, setCurrentFaction } =
+    React.useContext(FactionDataContext);
+
+  React.useEffect(() => {
+    setCurrentFaction(factionId);
+  }, [factionId]);
   const factionData = allFactionData.find(
     (faction) => faction.id === factionId
   );

@@ -7,15 +7,11 @@ import { UnitDataContext } from '../../providers/UnitDataProvider/UnitDataContex
 import { Box } from '@mui/material';
 
 export function UnitCardList() {
-  const { allUnitsData } = React.useContext(UnitDataContext);
-
-  return (
-    <>
-      {allUnitsData.map((unit: Unit) => (
-        <Box key={unit.id}>
-          <UnitCard unit={unit} />
-        </Box>
-      ))}
-    </>
+  const { allUnitsData, selectedUnit } = React.useContext(UnitDataContext);
+  const currentUnit = React.useMemo(
+    () =>
+      allUnitsData.find((unit) => unit.id === selectedUnit) ?? allUnitsData[0],
+    [selectedUnit, allUnitsData]
   );
+  return <UnitCard unit={currentUnit} />;
 }

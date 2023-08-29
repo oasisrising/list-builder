@@ -7,13 +7,14 @@ import { Dictionary } from 'lodash';
 
 interface FactionContextProps {
   allFactionData: Faction[];
-  setCurrentFaction?: (id: string) => void;
+  setCurrentFaction: (id: string) => void;
   currentFaction: string;
 }
 
 export const FactionDataContext = createContext<FactionContextProps>({
   allFactionData: [],
   currentFaction: '',
+  setCurrentFaction: () => {},
 });
 
 export default function FactionDataProvider({ children, allFactionData }) {
